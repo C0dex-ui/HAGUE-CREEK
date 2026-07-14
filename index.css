@@ -3017,8 +3017,7 @@ body.body-locked {
   font-size: clamp(1.8rem, 3.2vw, 3.2rem);
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--clr-bg-cream);
-  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.35);
   letter-spacing: 0.05em;
 }
 
