@@ -1045,6 +1045,7 @@ section {
   position: relative;
   background-color: var(--clr-bg-white);
   padding: var(--space-xl) 0;
+  z-index: 3;
 }
 
 .profile-container {
@@ -2360,6 +2361,8 @@ body.body-locked {
 .services-outlines-section {
   padding: var(--space-xl) 0;
   background-color: var(--clr-bg-white);
+  position: relative;
+  z-index: 2;
 }
 
 .outlines-grid {
@@ -2433,6 +2436,7 @@ body.body-locked {
 .neighborhoods-gallery-section {
   padding: var(--space-xl) 0;
   position: relative;
+  z-index: 2;
 }
 
 .gallery-collage-grid {
@@ -2523,6 +2527,8 @@ body.body-locked {
 .team-grid-section {
   padding: var(--space-xl) 0;
   background-color: var(--clr-bg-white);
+  position: relative;
+  z-index: 2;
 }
 
 .team-grid {
@@ -2643,6 +2649,8 @@ body.body-locked {
 /* Popular Categories */
 .popular-categories-section {
   padding: var(--space-xl) 0;
+  position: relative;
+  z-index: 2;
 }
 
 .categories-grid {
@@ -2714,6 +2722,8 @@ body.body-locked {
 /* Blog Grid */
 .blog-grid-section {
   padding: var(--space-xl) 0;
+  position: relative;
+  z-index: 2;
 }
 
 .blog-grid {
@@ -3021,6 +3031,7 @@ body.body-locked {
   min-height: 170vh;
   overflow: hidden;
   border-bottom: 1px solid var(--clr-border-gold);
+  z-index: 1;
 }
 
 .explorations-container {
@@ -3047,7 +3058,7 @@ body.body-locked {
   align-items: flex-start;
   height: 70vh;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 .explorations-title {
