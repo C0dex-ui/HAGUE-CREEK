@@ -2922,4 +2922,33 @@ body.body-locked {
   transform: scale(1.03);
 }
 
+/* 17. Dedicated Core Mission Section */
+.dedication-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--clr-bg-warm);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.dedication-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dedication-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw + 1rem, 2.6rem);
+  color: var(--clr-primary);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dedication-text {
+  font-size: clamp(1.05rem, 0.5vw + 1rem, 1.25rem);
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  color: var(--clr-primary-light);
+  font-weight: 400;
+}
+
 
