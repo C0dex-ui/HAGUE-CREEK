@@ -40,8 +40,8 @@ function initStickyHeader() {
  * 2. Mobile Menu Panel Toggle
  */
 function initMobileMenu() {
-  const toggleBtn = document.getElementById('nav-toggle');
-  const navPanel = document.getElementById('mobile-nav-panel');
+  const toggleBtn = document.getElementById('nav-toggle-btn');
+  const navPanel = document.getElementById('mobile-nav-menu');
   if (!toggleBtn || !navPanel) return;
 
   const toggleMenu = () => {
@@ -53,7 +53,7 @@ function initMobileMenu() {
   toggleBtn.addEventListener('click', toggleMenu);
 
   // Close menu if links are clicked
-  const links = navPanel.querySelectorAll('.mobile-menu-link, .mobile-sub-link');
+  const links = navPanel.querySelectorAll('.mobile-menu-link');
   links.forEach(link => {
     link.addEventListener('click', () => {
       toggleBtn.classList.remove('active');
@@ -132,23 +132,113 @@ function initScrollReveals() {
 }
 
 /**
- * 5. Mock Search & Listing Filter Submission Action
+ * 5. Dynamic Search & Listing Filter System
  */
 function initMockSearch() {
   const searchForm = document.getElementById('hero-search-form');
-  if (!searchForm) return;
+  const cards = document.querySelectorAll('.listing-card');
+  const tabs = document.querySelectorAll('.county-tab');
+  
+  if (!searchForm || cards.length === 0) return;
 
+  // County Tab Filtering Logic
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.getAttribute('data-filter');
+      
+      // Toggle active tab class
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Filter cards
+      cards.forEach(card => {
+        const county = card.getAttribute('data-county');
+        if (filter === 'all' || county === filter) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.classList.remove('fade-out');
+          }, 10);
+        } else {
+          card.classList.add('fade-out');
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 400);
+        }
+      });
+    });
+  });
+
+  // Hero search form filtering
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get filter inputs
-    const type = document.getElementById('search-type')?.value || 'any';
-    const county = document.getElementById('search-county')?.value || 'any';
-    const acreage = document.getElementById('search-acreage')?.value || 'any';
-    const price = document.getElementById('search-price')?.value || 'any';
+    const countyFilter = document.getElementById('search-county').value;
+    const acreageFilter = document.getElementById('search-acreage').value;
+    const zoningFilter = document.getElementById('search-zoning').value;
+    const priceFilter = document.getElementById('search-price').value;
 
-    // Mock search confirmation popup
-    alert(`Searching Listings:\n- Type: ${type}\n- County: ${county}\n- Acreage: ${acreage}\n- Max Price: ${price}\n\nNote: The listings filter system is a Phase 1 mockup. Real listing data will load dynamically in Phase 3.`);
+    cards.forEach(card => {
+      const cardCounty = card.getAttribute('data-county');
+      const cardAcreageText = card.querySelector('.meta-item:nth-child(1) .meta-val').textContent;
+      const cardAcreage = parseInt(cardAcreageText);
+      const cardZoning = card.querySelector('.meta-item:nth-child(2) .meta-val').textContent.toLowerCase();
+      const cardPriceText = card.querySelector('.listing-price').textContent.replace(/[$,]/g, '');
+      const cardPrice = parseInt(cardPriceText);
+
+      // Check County match
+      let matchCounty = (countyFilter === 'all' || cardCounty === countyFilter);
+
+      // Check Acreage match
+      let matchAcreage = true;
+      if (acreageFilter === '10-40') {
+        matchAcreage = (cardAcreage >= 10 && cardAcreage <= 40);
+      } else if (acreageFilter === '40-160') {
+        matchAcreage = (cardAcreage >= 40 && cardAcreage <= 160);
+      } else if (acreageFilter === '160+') {
+        matchAcreage = (cardAcreage >= 160);
+      }
+
+      // Check Zoning match
+      let matchZoning = (zoningFilter === 'all' || cardZoning === zoningFilter);
+
+      // Check Price match
+      let matchPrice = true;
+      if (priceFilter === 'under-200k') {
+        matchPrice = (cardPrice < 200000);
+      } else if (priceFilter === '200k-500k') {
+        matchPrice = (cardPrice >= 200000 && cardPrice <= 500000);
+      } else if (priceFilter === '500k+') {
+        matchPrice = (cardPrice > 500000);
+      }
+
+      if (matchCounty && matchAcreage && matchZoning && matchPrice) {
+        card.style.display = 'flex';
+        setTimeout(() => {
+          card.classList.remove('fade-out');
+        }, 10);
+      } else {
+        card.classList.add('fade-out');
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 400);
+      }
+    });
+
+    // Reset tab active states since manual custom filters are run
+    tabs.forEach(t => t.classList.remove('active'));
+    const defaultTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === countyFilter);
+    if (defaultTab) {
+      defaultTab.classList.add('active');
+    } else {
+      const allTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === 'all');
+      if (allTab) allTab.classList.add('active');
+    }
+
+    // Scroll smoothly to properties results area
+    const resultsSec = document.getElementById('listings-section');
+    if (resultsSec) {
+      resultsSec.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 
   // Lead capture forms mock redirect/completion alert
@@ -294,7 +384,7 @@ function initCustomCursor() {
   hovers.forEach(el => {
     el.addEventListener('mouseenter', () => {
       // Don't apply general hover circle if inside cards
-      if (!el.closest('.listing-card')) {
+      if (!el.closest('.listing-card') && !el.closest('.featured-prop-card') && !el.closest('.category-card')) {
         cursor.classList.add('hovering');
       }
     });
@@ -304,7 +394,7 @@ function initCustomCursor() {
   });
 
   // Set up custom text on listing card hovers
-  const cards = document.querySelectorAll('.listing-card');
+  const cards = document.querySelectorAll('.listing-card, .featured-prop-card, .category-card');
   cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
       cursor.classList.add('has-text');
