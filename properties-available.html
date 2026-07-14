@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Land Listings | Hague Creek Land Brokerage</title>
+  <meta name="description" content="View active available properties, raw acreage, and custom ranches for sale in Arizona. Filter by county, acreage, zoning, and price budget.">
+  <link rel="stylesheet" href="index.css?v=1.0.1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <!-- Premium Curtain Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo">HAGUE<span>CREEK</span></div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Interactive Magnetic Cursor -->
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="custom-cursor-circle"></div>
+    <span class="custom-cursor-text"></span>
+  </div>
+
+  <!-- Background Architectural Grid Lines -->
+  <div class="bg-grid-lines" aria-hidden="true">
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+  </div>
+
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header Navigation -->
+  <header class="header-nav" id="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link" aria-label="Hague Creek Home">
+        HAGUE<span>CREEK</span>
+      </a>
+
+      <!-- Desktop Sitemap Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item">
+            <a href="properties-available.html" class="nav-link active">Properties</a>
+            <ul class="nav-dropdown">
+              <li class="dropdown-item"><a href="properties-available.html">Available Properties</a></li>
+              <li class="dropdown-item"><a href="properties-sold.html">Sold Properties</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="resources-buying.html" class="nav-link">Resources</a>
+            <ul class="nav-dropdown">
+              <li class="dropdown-item"><a href="resources-buying.html">Buying Land</a></li>
+              <li class="dropdown-item"><a href="resources-financing.html">Financing</a></li>
+              <li class="dropdown-item"><a href="resources-faq.html">Frequently Asked Questions</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta-wrapper">
+        <span class="nav-menu nav-cta-phone">
+          Call: <a href="tel:+15205550190" class="nav-cta-phone-link">+1 (520) 555-0190</a>
+        </span>
+        <a href="contact.html" class="btn btn-primary nav-menu btn-magnetic">Get a Consultation</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sitemap Slide-out Panel -->
+  <div class="mobile-nav-panel" id="mobile-nav-menu" aria-hidden="true">
+    <nav aria-label="Mobile Navigation">
+      <ul class="mobile-menu">
+        <li><a href="index.html" class="mobile-menu-link">Home</a></li>
+        <li><a href="about.html" class="mobile-menu-link">About Broker</a></li>
+        <li><a href="properties-available.html" class="mobile-menu-link">Available Properties</a></li>
+        <li><a href="properties-sold.html" class="mobile-menu-link">Sold Properties</a></li>
+        <li><a href="resources-buying.html" class="mobile-menu-link">Buying Land Guide</a></li>
+        <li><a href="resources-financing.html" class="mobile-menu-link">Financing Options</a></li>
+        <li><a href="resources-faq.html" class="mobile-menu-link">Frequently Asked Questions</a></li>
+        <li><a href="testimonials.html" class="mobile-menu-link">Client Testimonials</a></li>
+        <li><a href="blog.html" class="mobile-menu-link">Market Blog &amp; Insights</a></li>
+        <li><a href="contact.html" class="mobile-menu-link">Contact Office</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-contact-info">
+      <p class="mobile-nav-title">Hague Creek Land Brokerage</p>
+      <p>Phone: <a href="tel:+15205550190">+1 (520) 555-0190</a></p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section" style="min-height: 65vh; padding: var(--space-xxl) 0 var(--space-lg) 0;">
+      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(27, 57, 66, 0.5) 0%, rgba(27, 57, 66, 0.85) 100%);"></div>
+      <div class="container hero-content-wrapper">
+        <div class="hero-inner">
+          <span class="eyebrow text-gold reveal">Listing Directory</span>
+          <h1 class="reveal delay-1 reveal-mask"><span class="reveal-slide-up">Available Land For Sale</span></h1>
+          <p class="hero-subtitle reveal delay-2">Filter active rural tracts, parcel layouts, and agricultural properties by county, acreage size, zoning codes, and budget.</p>
+          
+          <!-- NAPA-Style Overlapping Horizontal Search Card Widget -->
+          <div class="search-widget reveal delay-3">
+            <form id="hero-search-form">
+              <div class="search-grid">
+                <div class="form-group">
+                  <label for="search-county">Location County</label>
+                  <select id="search-county" name="county" class="form-select">
+                    <option value="all">All Counties</option>
+                    <option value="cochise">Cochise County</option>
+                    <option value="yavapai">Yavapai County</option>
+                    <option value="pima">Pima County</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="search-acreage">Acreage Range</label>
+                  <select id="search-acreage" name="acreage" class="form-select">
+                    <option value="all">Any Size</option>
+                    <option value="10-40">10 – 40 Acres</option>
+                    <option value="40-160">40 – 160 Acres</option>
+                    <option value="160+">160+ Acres</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="search-zoning">Zoning Code</label>
+                  <select id="search-zoning" name="zoning" class="form-select">
+                    <option value="all">Any Zoning</option>
+                    <option value="ru-4">RU-4 (4 Ac Min)</option>
+                    <option value="ru-36">RU-36 (36 Ac Min)</option>
+                    <option value="general">General Rural</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="search-price">Price Budget</label>
+                  <select id="search-price" name="price" class="form-select">
+                    <option value="all">Any Budget</option>
+                    <option value="under-200k">Under $200k</option>
+                    <option value="200k-500k">$200k – $500k</option>
+                    <option value="500k+">$500k+</option>
+                  </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary search-submit-btn btn-magnetic">
+                  Filter Properties
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties Grid Section -->
+    <section class="listings-grid-section" id="listings-section">
+      <div class="container">
+        
+        <!-- County Navigation Tabs -->
+        <div class="county-tabs-wrapper reveal">
+          <button class="county-tab active" data-filter="all">All Counties</button>
+          <button class="county-tab" data-filter="cochise">Cochise County</button>
+          <button class="county-tab" data-filter="yavapai">Yavapai County</button>
+          <button class="county-tab" data-filter="pima">Pima County</button>
+        </div>
+
+        <div class="listings-grid reveal delay-1">
+          
+          <!-- Listing Card 1 -->
+          <article class="listing-card" data-county="cochise">
+            <div class="listing-image-container">
+              <span class="listing-badge badge-available">Available</span>
+              <img src="assets/images/coyote_ridge_house.png" alt="Coyote Ridge Land" class="listing-image">
+            </div>
+            <div class="listing-details">
+              <span class="listing-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Cochise County, AZ
+              </span>
+              <h3 class="listing-title">Coyote Ridge Homestead Tract</h3>
+              
+              <div class="listing-meta-row">
+                <div class="meta-item">
+                  <span class="meta-label">Acreage</span>
+                  <span class="meta-val">40 Acres</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Zoning</span>
+                  <span class="meta-val">RU-4</span>
+                </div>
+              </div>
+              
+              <div class="listing-price-row">
+                <span class="listing-price">$145,000</span>
+                <div class="listing-actions">
+                  <a href="#" class="pdf-download-btn" data-property="Coyote Ridge Homestead Tract">PDF Specs</a>
+                  <a href="contact.html" class="listing-link">Inquire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Listing Card 2 -->
+          <article class="listing-card" data-county="pima">
+            <div class="listing-image-container">
+              <span class="listing-badge badge-available">Available</span>
+              <img src="assets/images/san_pedro_house.png" alt="San Pedro River Ranch" class="listing-image">
+            </div>
+            <div class="listing-details">
+              <span class="listing-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Pima County, AZ
+              </span>
+              <h3 class="listing-title">San Pedro River Riparian Ranch</h3>
+              
+              <div class="listing-meta-row">
+                <div class="meta-item">
+                  <span class="meta-label">Acreage</span>
+                  <span class="meta-val">160 Acres</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Zoning</span>
+                  <span class="meta-val">RU-36</span>
+                </div>
+              </div>
+              
+              <div class="listing-price-row">
+                <span class="listing-price">$495,000</span>
+                <div class="listing-actions">
+                  <a href="#" class="pdf-download-btn" data-property="San Pedro River Riparian Ranch">PDF Specs</a>
+                  <a href="contact.html" class="listing-link">Inquire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Listing Card 3 -->
+          <article class="listing-card" data-county="yavapai">
+            <div class="listing-image-container">
+              <span class="listing-badge badge-available">Available</span>
+              <img src="assets/images/verde_river_house.png" alt="Verde River Lands" class="listing-image">
+            </div>
+            <div class="listing-details">
+              <span class="listing-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Yavapai County, AZ
+              </span>
+              <h3 class="listing-title">Verde River Highlands View</h3>
+              
+              <div class="listing-meta-row">
+                <div class="meta-item">
+                  <span class="meta-label">Acreage</span>
+                  <span class="meta-val">25 Acres</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Zoning</span>
+                  <span class="meta-val">General</span>
+                </div>
+              </div>
+              
+              <div class="listing-price-row">
+                <span class="listing-price">$220,000</span>
+                <div class="listing-actions">
+                  <a href="#" class="pdf-download-btn" data-property="Verde River Highlands View">PDF Specs</a>
+                  <a href="contact.html" class="listing-link">Inquire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Gravity forms-style consultation routing -->
+    <section id="contact-section" class="contact-section">
+      <div class="container" style="max-width: 700px;">
+        <div class="lead-form-wrapper reveal">
+          <form class="lead-form">
+            <h3 class="form-header-title">Request Property Inquiry</h3>
+            <p class="form-header-subtitle">Enter your name and email to receive printable listing spec books with maps.</p>
+            
+            <div class="lead-form-grid">
+              <div class="form-control">
+                <label for="form-name">Full Name</label>
+                <input type="text" id="form-name" name="name" class="form-input-text" required placeholder="John Doe">
+              </div>
+              <div class="form-control">
+                <label for="form-email">Email Address</label>
+                <input type="email" id="form-email" name="email" class="form-input-text" required placeholder="john@example.com">
+              </div>
+            </div>
+            
+            <div class="lead-form-grid">
+              <div class="form-control">
+                <label for="form-phone">Phone Number</label>
+                <input type="tel" id="form-phone" name="phone" class="form-input-text" required placeholder="(520) 555-0190">
+              </div>
+              <div class="form-control">
+                <label for="form-intent">Primary Intent</label>
+                <select id="form-intent" name="intent" class="form-select">
+                  <option value="buy">Buying Rural Land</option>
+                  <option value="sell">Selling Land/Ranch</option>
+                  <option value="other">General Consultation</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-control">
+              <label for="form-message">Describe Your Vision / Requirements</label>
+              <textarea id="form-message" name="message" class="form-textarea" required placeholder="Specify zoning interests, water rights requirements, or soil needs."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary form-submit-btn btn-magnetic">
+              Send Property Specs
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- NAPA White-Themed Footer Section -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-col">
+        <div class="footer-logo">HAGUE<span>CREEK</span></div>
+        <p class="footer-desc">Specialized Arizona land brokerage helping clients acquire, hold, and sell agricultural acreage, vacant parcels, and rural ranches.</p>
+        <div class="footer-socials">
+          <a href="https://facebook.com/haguecreek" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="https://x.com/haguecreek" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          <a href="https://instagram.com/haguecreek" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"></path></svg></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4 class="footer-title">Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Broker</a></li>
+          <li><a href="properties-available.html">Available Land</a></li>
+          <li><a href="properties-sold.html">Sold Portfolio</a></li>
+          <li><a href="resources-faq.html">FAQ &amp; Due Diligence</a></li>
+          <li><a href="contact.html">Contact Office</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Office NAP Details</h4>
+        <p class="footer-contact"><strong>Tucson Headquarters:</strong><br>100 E Congress St, Suite 300, Tucson, AZ 85701</p>
+        <p class="footer-contact"><strong>Direct Call:</strong><br><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
+        <p class="footer-contact"><strong>DRE Register:</strong><br>License #BR654321000</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-layout">
+        <p>&copy; 2026 Hague Creek Land Brokerage. All rights reserved.</p>
+        <p><a href="resources-faq.html">Privacy Policy</a> · <a href="resources-faq.html">Terms of Representation</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky CTA Bar -->
+  <div class="mobile-sticky-cta-bar">
+    <a href="tel:+15205550190" class="mobile-cta-btn mobile-cta-phone-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      Call Broker
+    </a>
+    <a href="contact.html" class="mobile-cta-btn mobile-cta-quote-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      Consultation
+    </a>
+  </div>
+
+  <script src="assets/js/main.js?v=1.0.1"></script>
+</body>
+</html>
