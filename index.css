@@ -3,33 +3,34 @@
    ========================================================================== */
 
 /* 1. Imports */
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
 /* 2. Custom Properties & Variables */
 :root {
-  /* Color Tokens */
-  --clr-primary-hsl: 153, 39%, 12%; /* #132c20 - Cypress Green */
+  /* Color Tokens - NAPA Theme Demo Palette */
+  --clr-primary-hsl: 194, 42%, 18%; /* #1b3942 - NAPA Navy-Teal */
   --clr-primary: hsl(var(--clr-primary-hsl));
-  --clr-primary-light: hsl(153, 39%, 18%);
-  --clr-primary-dark: hsl(153, 40%, 8%);
+  --clr-primary-light: hsl(194, 42%, 25%);
+  --clr-primary-dark: hsl(194, 42%, 12%);
   
-  --clr-accent-hsl: 40, 48%, 54%; /* #c29b53 - Desert Gold */
+  --clr-accent-hsl: 44, 52%, 38%; /* #94792f - NAPA Gold/Bronze */
   --clr-accent: hsl(var(--clr-accent-hsl));
-  --clr-accent-light: hsl(40, 48%, 62%);
-  --clr-accent-dark: hsl(40, 48%, 44%);
+  --clr-accent-light: hsl(44, 52%, 46%);
+  --clr-accent-dark: hsl(44, 52%, 30%);
+  --clr-accent-light-gold: hsl(43, 39%, 58%); /* #bda76e - NAPA Highlight Gold */
   
-  --clr-bg-warm: hsl(36, 33%, 97%); /* #faf8f5 - Bone/Cream */
+  --clr-bg-warm: hsl(36, 17%, 97%); /* #fbf9f6 - NAPA Cream/Warm Off-white */
   --clr-bg-white: hsl(0, 0%, 100%);
-  --clr-bg-card: hsla(0, 0%, 100%, 0.85);
+  --clr-bg-card: hsla(0, 0%, 100%, 0.95); /* High opacity pure white card */
   
-  --clr-charcoal: hsl(210, 10%, 15%); /* #212529 */
-  --clr-text-light: hsl(210, 10%, 45%);
-  --clr-border: hsla(153, 39%, 12%, 0.08);
-  --clr-border-gold: hsla(40, 48%, 54%, 0.3);
+  --clr-charcoal: hsl(194, 20%, 10%); /* Custom charcoal matching navy tint */
+  --clr-text-light: hsl(194, 15%, 45%);
+  --clr-border: hsla(194, 42%, 18%, 0.08);
+  --clr-border-gold: hsla(44, 52%, 38%, 0.25);
   
-  /* Typography Scale */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Barlow', system-ui, -apple-system, sans-serif;
+  /* Typography Scale - NAPA Typography Style */
+  --font-serif: 'Frank Ruhl Libre', Georgia, serif;
+  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
   
   --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
   --fs-h2: clamp(1.8rem, 3vw + 1rem, 2.8rem);
@@ -46,18 +47,18 @@
   --space-xl: 5rem;
   --space-xxl: 8rem;
   
-  /* Shadows & Glassmorphism */
-  --shadow-sm: 0 2px 8px rgba(19, 44, 32, 0.04);
-  --shadow-md: 0 8px 30px rgba(19, 44, 32, 0.06);
-  --shadow-lg: 0 16px 40px rgba(19, 44, 32, 0.1);
-  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  /* Shadows & Glassmorphism - NAPA Soft Shadows */
+  --shadow-sm: 0 2px 10px rgba(27, 57, 66, 0.04);
+  --shadow-md: 0 8px 30px rgba(27, 57, 66, 0.06);
+  --shadow-lg: 0 16px 40px rgba(27, 57, 66, 0.12);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.02);
   
-  --glass-bg: rgba(250, 248, 245, 0.8);
-  --glass-blur: blur(12px);
+  --glass-bg: rgba(251, 249, 246, 0.9);
+  --glass-blur: blur(8px);
   
   /* Borders and Transitions */
   --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-md: 10px; /* Rounded corners to match 10px NAPA standard */
   --radius-lg: 16px;
   --radius-round: 50%;
   
@@ -264,29 +265,33 @@ section {
   top: 0;
   left: 0;
   width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
   z-index: 1000;
   background-color: transparent;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(27, 57, 66, 0.06);
   transition: var(--transition-smooth);
 }
 
 /* Scroll Active Header State */
 .header-nav.scrolled {
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
+  background-color: var(--clr-bg-white);
   border-bottom: 1px solid var(--clr-border);
   box-shadow: var(--shadow-sm);
 }
 
 .header-nav.scrolled .nav-container {
-  padding: 0.8rem var(--space-md);
+  padding: 0 var(--space-md);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem var(--space-md);
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--space-md);
   transition: var(--transition-smooth);
 }
 
@@ -539,7 +544,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(19, 44, 32, 0.4) 0%, rgba(19, 44, 32, 0.8) 100%);
+  background: linear-gradient(to bottom, rgba(27, 57, 66, 0.3) 0%, rgba(27, 57, 66, 0.75) 100%);
   z-index: 2;
 }
 
@@ -622,16 +627,16 @@ section {
 .form-select, .form-input {
   width: 100%;
   padding: 0.8rem 1rem;
-  border: 1px solid rgba(19, 44, 32, 0.15);
+  border: 1px solid rgba(27, 57, 66, 0.15);
   background-color: var(--clr-bg-white);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md); /* Match NAPA rounded corners */
   font-family: var(--font-sans);
   font-size: var(--fs-meta);
   color: var(--clr-charcoal);
   outline: none;
   transition: var(--transition-fast);
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23132c20' d='M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231b3942' d='M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
@@ -731,9 +736,9 @@ section {
   color: var(--clr-bg-white);
 }
 
-.badge-available { background-color: var(--clr-primary); }
-.badge-pending { background-color: var(--clr-accent-dark); }
-.badge-sold { background-color: #6c757d; }
+.badge-available { background-color: var(--clr-accent); }
+.badge-pending { background-color: var(--clr-primary-light); }
+.badge-sold { background-color: var(--clr-text-light); }
 
 .listing-details {
   padding: var(--space-md);
@@ -744,7 +749,7 @@ section {
 
 .listing-location {
   font-size: var(--fs-meta);
-  color: var(--clr-accent-dark);
+  color: var(--clr-accent);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
@@ -805,14 +810,14 @@ section {
 .listing-link {
   font-size: var(--fs-meta);
   font-weight: 700;
-  color: var(--clr-accent-dark);
+  color: var(--clr-accent);
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
 .listing-link:hover {
-  color: var(--clr-primary);
+  color: var(--clr-primary-light);
 }
 
 .listing-actions {
@@ -827,7 +832,7 @@ section {
 }
 
 .pdf-download-btn:hover {
-  color: var(--clr-accent-dark);
+  color: var(--clr-accent);
 }
 
 /* 11. E-E-A-T / Land Broker Profile (Inspiration: Burgherray / Midwest Land Group Agent Profile) */
@@ -1833,7 +1838,7 @@ body.body-locked {
   pointer-events: none;
   opacity: 0.075; /* Increased opacity for better visibility */
   z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 200 200'%3E%3Cpath d='M10,80 C40,90 60,60 100,80 C140,100 160,50 190,80 M0,120 C30,130 50,100 90,120 C130,140 150,90 180,120 M20,40 C50,50 70,20 110,40 C150,60 170,10 200,40 M0,160 C30,170 50,140 90,160 C130,180 150,130 180,160' fill='none' stroke='%23132c20' stroke-width='1' stroke-dasharray='4 4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 200 200'%3E%3Cpath d='M10,80 C40,90 60,60 100,80 C140,100 160,50 190,80 M0,120 C30,130 50,100 90,120 C130,140 150,90 180,120 M20,40 C50,50 70,20 110,40 C150,60 170,10 200,40 M0,160 C30,170 50,140 90,160 C130,180 150,130 180,160' fill='none' stroke='%231b3942' stroke-width='1' stroke-dasharray='4 4'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
 
