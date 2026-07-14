@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initMagneticElements();
   initMarquee();
+  initExplorationsParallax();
 });
 
 /**
@@ -528,4 +529,54 @@ function initMarquee() {
     duration: 35,
     repeat: -1
   });
+}
+
+/**
+ * 11. Explorations Column Scroll Parallax & Left Pinning
+ */
+function initExplorationsParallax() {
+  if (window.innerWidth <= 1024) return;
+  
+  const pinContainer = document.getElementById('explorations-pin-container');
+  const leftPanel = document.getElementById('explorations-left-panel');
+  if (!pinContainer || !leftPanel) return;
+
+  // Pin the left panel as the user scrolls past the gallery
+  ScrollTrigger.create({
+    trigger: '#explorations-section',
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: '#explorations-left-panel',
+    pinSpacing: false
+  });
+
+  // Animate left column upwards relative to scroll
+  gsap.fromTo('.parallax-column.col-left', 
+    { y: '8%' }, 
+    { 
+      y: '-8%', 
+      ease: 'none', 
+      scrollTrigger: {
+        trigger: '#explorations-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    }
+  );
+
+  // Animate right column downwards relative to scroll
+  gsap.fromTo('.parallax-column.col-right', 
+    { y: '-8%' }, 
+    { 
+      y: '8%', 
+      ease: 'none', 
+      scrollTrigger: {
+        trigger: '#explorations-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    }
+  );
 }
