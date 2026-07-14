@@ -2661,4 +2661,157 @@ body.body-locked {
   line-height: 1.5;
 }
 
+/* 16. Take Off Premium CTA Section styling */
+.takeoff-cta-section {
+  background-color: var(--clr-primary-dark);
+  color: var(--clr-bg-white);
+  padding: var(--space-xl) 0;
+  overflow: hidden;
+}
+
+.takeoff-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .takeoff-layout {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-xl);
+  }
+}
+
+.takeoff-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.takeoff-title {
+  color: var(--clr-bg-white);
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw + 1rem, 3.2rem);
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+}
+
+.takeoff-script {
+  display: block;
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.8rem;
+  color: var(--clr-accent-light-gold);
+  margin-top: 0.2rem;
+  margin-left: 1rem;
+  transform: rotate(-3deg);
+  font-weight: normal;
+}
+
+.takeoff-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: var(--space-lg);
+  max-width: 550px;
+}
+
+.takeoff-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.takeoff-actions .btn-pill {
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--clr-bg-white);
+}
+
+.takeoff-actions .btn-pill:hover {
+  background-color: var(--clr-bg-white);
+  color: var(--clr-primary-dark);
+  border-color: var(--clr-bg-white);
+}
+
+.takeoff-or {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1em;
+}
+
+/* Asymmetrical 3-Image Collage */
+.takeoff-collage {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.collage-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.collage-tall-card {
+  height: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .collage-tall-card {
+    height: 440px;
+  }
+}
+
+.collage-tall-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.collage-tall-card:hover .collage-tall-img {
+  transform: scale(1.03);
+}
+
+.collage-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.collage-small-card {
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .collage-small-card {
+    height: 210px;
+  }
+}
+
+.collage-small-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.collage-small-card:hover .collage-small-img {
+  transform: scale(1.03);
+}
+
 
