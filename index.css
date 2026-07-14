@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* 1. Imports */
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
 /* 2. Custom Properties & Variables */
 :root {
@@ -951,7 +951,7 @@ section {
 @media (min-width: 1024px) {
   .profile-container {
     grid-template-columns: 5.5fr 6.5fr;
-    gap: var(--space-lg); /* Clean spacing gap, no overlap */
+    gap: 0; /* Direct overlap layout */
   }
 }
 
@@ -965,7 +965,7 @@ section {
 
 .profile-img {
   width: 100%;
-  height: 680px; /* Default desktop portrait layout height */
+  height: 680px; /* Tall portrait on desktop viewports */
   display: block;
   object-fit: cover;
   transition: var(--transition-smooth);
@@ -973,7 +973,7 @@ section {
 
 @media (max-width: 1023px) {
   .profile-img {
-    height: 400px; /* Scaled for mobile */
+    height: 400px; /* Scaled down for mobile viewports */
   }
 }
 
@@ -996,6 +996,7 @@ section {
 
 @media (min-width: 1024px) {
   .profile-content {
+    margin-left: -100px; /* Overlaps the right edge of the portrait image */
     padding: 4rem var(--space-xl);
     border-radius: 30px; /* Standard premium rounded card */
   }
@@ -1042,32 +1043,13 @@ section {
   margin-bottom: var(--space-md);
 }
 
-.profile-cta-block {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  align-items: center;
-  margin-top: var(--space-md);
-}
-
-.profile-cta-block .btn-secondary {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: var(--clr-bg-white);
-}
-
-.profile-cta-block .btn-secondary:hover {
-  background-color: var(--clr-bg-white);
-  color: var(--clr-primary-dark);
-}
-
-.profile-cta-block .btn-primary {
-  background-color: var(--clr-accent);
-  color: var(--clr-bg-white);
-}
-
-.profile-cta-block .btn-primary:hover {
-  background-color: var(--clr-accent-light);
-  color: var(--clr-bg-white);
+.profile-signature {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.5rem;
+  color: var(--clr-accent-light-gold);
+  margin-top: var(--space-sm);
+  letter-spacing: 0.03em;
+  line-height: 1;
 }
 
 /* 12. Interactive FAQ Accordion (AEO / Schema Compliant) */
