@@ -5,12 +5,15 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initStickyHeader();
   initMobileMenu();
   initFaqAccordion();
   initScrollReveals();
   initMockSearch();
   initPdfDownload();
+  initCustomCursor();
+  initMagneticElements();
 });
 
 /**
@@ -100,20 +103,25 @@ function initFaqAccordion() {
  * 4. Scroll-Triggered Reveal Animations using IntersectionObserver
  */
 function initScrollReveals() {
-  const revealElements = document.querySelectorAll('.reveal');
+  const revealElements = document.querySelectorAll('.reveal, .reveal-slide-up');
   if (revealElements.length === 0) return;
 
   const observerOptions = {
-    root: null, // Viewport
-    rootMargin: '0px 0px -80px 0px', // Trigger slightly before element is fully visible
-    threshold: 0.15 // 15% visibility required
+    root: null,
+    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.15
   };
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Stop observing once revealed
+        
+        // Also trigger child reveals if parent is intersected
+        const children = entry.target.querySelectorAll('.reveal-slide-up');
+        children.forEach(child => child.classList.add('active'));
+        
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -197,6 +205,152 @@ function initPdfDownload() {
           nameInput.focus();
         }, 800); // Wait for smooth scroll to complete
       }
+    });
+  });
+}
+
+/**
+ * 7. Premium Curtain Preloader
+ */
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const barFill = document.getElementById('preloader-bar-fill');
+  if (!preloader || !barFill) return;
+
+  // Lock body scroll
+  document.body.classList.add('body-locked');
+
+  // Simulate progress loading bar
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.floor(Math.random() * 15) + 5;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(interval);
+      
+      // Load completed - remove preloader
+      setTimeout(() => {
+        barFill.style.width = '100%';
+        setTimeout(() => {
+          preloader.classList.add('loaded');
+          document.body.classList.remove('body-locked');
+          
+          // Trigger H1 line-reveal on preloader exit
+          setTimeout(() => {
+            const h1Reveal = document.querySelector('.hero h1 .reveal-slide-up');
+            if (h1Reveal) h1Reveal.classList.add('active');
+          }, 400);
+        }, 300);
+      }, 200);
+    } else {
+      barFill.style.width = progress + '%';
+    }
+  }, 60);
+
+  // Fallback in case loading gets stuck or window takes too long
+  window.addEventListener('load', () => {
+    progress = 100;
+  });
+}
+
+/**
+ * 8. Custom Interactive Magnetic Cursor (Mouse-Follower)
+ */
+function initCustomCursor() {
+  const cursor = document.getElementById('custom-cursor');
+  if (!cursor) return;
+
+  // Position variables
+  let mouseX = 0;
+  let mouseY = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+  let isMoving = false;
+
+  // Track mouse coordinates
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    if (!isMoving) {
+      cursor.style.display = 'flex';
+      isMoving = true;
+    }
+  }, { passive: true });
+
+  // Use requestAnimationFrame for smooth cursor following (lag interpolation)
+  const renderCursor = () => {
+    const ease = 0.15; // Speed multiplier for lag
+    cursorX += (mouseX - cursorX) * ease;
+    cursorY += (mouseY - cursorY) * ease;
+    
+    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    requestAnimationFrame(renderCursor);
+  };
+  requestAnimationFrame(renderCursor);
+
+  // Set up hover states on interactive links & buttons
+  const hovers = document.querySelectorAll('a, button, select, input, textarea, .accordion-header');
+  hovers.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      // Don't apply general hover circle if inside cards
+      if (!el.closest('.listing-card')) {
+        cursor.classList.add('hovering');
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hovering');
+    });
+  });
+
+  // Set up custom text on listing card hovers
+  const cards = document.querySelectorAll('.listing-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cursor.classList.add('has-text');
+      const textSpan = cursor.querySelector('.custom-cursor-text');
+      if (textSpan) textSpan.textContent = 'EXPLORE';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      cursor.classList.remove('has-text');
+    });
+
+    // Custom cursor text for listing card actions
+    const pdfBtn = card.querySelector('.pdf-download-btn');
+    if (pdfBtn) {
+      pdfBtn.addEventListener('mouseenter', () => {
+        const textSpan = cursor.querySelector('.custom-cursor-text');
+        if (textSpan) textSpan.textContent = 'PDF';
+      });
+      pdfBtn.addEventListener('mouseleave', () => {
+        const textSpan = cursor.querySelector('.custom-cursor-text');
+        if (textSpan) textSpan.textContent = 'EXPLORE';
+      });
+    }
+  });
+}
+
+/**
+ * 9. Magnetic Elements Effect (Motionsites.ai Pull)
+ */
+function initMagneticElements() {
+  const magnets = document.querySelectorAll('.btn-magnetic');
+  if (magnets.length === 0 || window.innerWidth <= 1024) return;
+
+  magnets.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const bound = btn.getBoundingClientRect();
+      const x = e.clientX - bound.left - bound.width / 2;
+      const y = e.clientY - bound.top - bound.height / 2;
+      
+      // Pull element towards cursor (max 15px)
+      btn.style.transform = `translate3d(${x * 0.35}px, ${y * 0.35}px, 0) scale(1.02)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      // Smooth return to initial state
+      btn.style.transform = '';
     });
   });
 }
