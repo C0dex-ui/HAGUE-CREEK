@@ -138,14 +138,67 @@ function initMockSearch() {
   const searchForm = document.getElementById('hero-search-form');
   const cards = document.querySelectorAll('.listing-card');
   const tabs = document.querySelectorAll('.county-tab');
+  const heroTabs = document.querySelectorAll('.hero-tab');
+  const gridContainer = document.querySelector('.listings-grid');
   
   if (!searchForm || cards.length === 0) return;
 
-  // County Tab Filtering Logic
+  // 1. Hero Tab Click Behavior
+  heroTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      heroTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const isOffMarket = tab.textContent.toLowerCase().includes('off-market');
+      
+      // Remove any existing no-results message
+      const existingMsg = document.querySelector('.no-results-msg');
+      if (existingMsg) existingMsg.remove();
+
+      if (isOffMarket) {
+        // Hide all listings and show a notice
+        cards.forEach(card => card.style.display = 'none');
+        if (gridContainer) {
+          const msg = document.createElement('div');
+          msg.className = 'no-results-msg text-center';
+          msg.style.cssText = 'grid-column: 1/-1; color: var(--clr-text-light); padding: 4rem 2rem; width: 100%;';
+          msg.innerHTML = '<h3 style="font-family: var(--font-serif); color: var(--clr-primary); margin-bottom: 10px;">No Off-Market Listings</h3><p>We currently have no off-market listings available. Please contact Arthur Hague directly for off-market acquisitions.</p>';
+          gridContainer.appendChild(msg);
+        }
+      } else {
+        // Reset to show all active listings
+        cards.forEach(card => {
+          card.style.display = 'flex';
+          card.classList.remove('fade-out');
+        });
+        tabs.forEach(t => t.classList.remove('active'));
+        const allTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === 'all');
+        if (allTab) allTab.classList.add('active');
+      }
+
+      // Scroll smoothly to properties results area
+      const resultsSec = document.getElementById('listings-section');
+      if (resultsSec) {
+        resultsSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // 2. County Tab Filtering Logic
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const filter = tab.getAttribute('data-filter');
       
+      // Reset hero tabs to "For Sale"
+      heroTabs.forEach(t => t.classList.remove('active'));
+      const forSaleTab = Array.from(heroTabs).find(t => t.textContent.toLowerCase().includes('for sale'));
+      if (forSaleTab) forSaleTab.classList.add('active');
+
+      // Remove any existing no-results message
+      const existingMsg = document.querySelector('.no-results-msg');
+      if (existingMsg) existingMsg.remove();
+
       // Toggle active tab class
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
@@ -168,54 +221,39 @@ function initMockSearch() {
     });
   });
 
-  // Hero search form filtering
+  // 3. Hero Search Form Filtering (Pill Search Input)
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const countyFilter = document.getElementById('search-county').value;
-    const acreageFilter = document.getElementById('search-acreage').value;
-    const zoningFilter = document.getElementById('search-zoning').value;
-    const priceFilter = document.getElementById('search-price').value;
+    // Reset hero tabs to "For Sale"
+    heroTabs.forEach(t => t.classList.remove('active'));
+    const forSaleTab = Array.from(heroTabs).find(t => t.textContent.toLowerCase().includes('for sale'));
+    if (forSaleTab) forSaleTab.classList.add('active');
+
+    // Remove any existing no-results message
+    const existingMsg = document.querySelector('.no-results-msg');
+    if (existingMsg) existingMsg.remove();
+
+    const query = document.getElementById('hero-search-input').value.toLowerCase().trim();
+    let matchCount = 0;
 
     cards.forEach(card => {
-      const cardCounty = card.getAttribute('data-county');
-      const cardAcreageText = card.querySelector('.meta-item:nth-child(1) .meta-val').textContent;
-      const cardAcreage = parseInt(cardAcreageText);
+      const cardCounty = card.getAttribute('data-county').toLowerCase();
+      const cardTitle = card.querySelector('.listing-title').textContent.toLowerCase();
+      const cardAcreageText = card.querySelector('.meta-item:nth-child(1) .meta-val').textContent.toLowerCase();
       const cardZoning = card.querySelector('.meta-item:nth-child(2) .meta-val').textContent.toLowerCase();
-      const cardPriceText = card.querySelector('.listing-price').textContent.replace(/[$,]/g, '');
-      const cardPrice = parseInt(cardPriceText);
 
-      // Check County match
-      let matchCounty = (countyFilter === 'all' || cardCounty === countyFilter);
+      const matchesQuery = cardCounty.includes(query) || 
+                           cardTitle.includes(query) || 
+                           cardAcreageText.includes(query) || 
+                           cardZoning.includes(query);
 
-      // Check Acreage match
-      let matchAcreage = true;
-      if (acreageFilter === '10-40') {
-        matchAcreage = (cardAcreage >= 10 && cardAcreage <= 40);
-      } else if (acreageFilter === '40-160') {
-        matchAcreage = (cardAcreage >= 40 && cardAcreage <= 160);
-      } else if (acreageFilter === '160+') {
-        matchAcreage = (cardAcreage >= 160);
-      }
-
-      // Check Zoning match
-      let matchZoning = (zoningFilter === 'all' || cardZoning === zoningFilter);
-
-      // Check Price match
-      let matchPrice = true;
-      if (priceFilter === 'under-200k') {
-        matchPrice = (cardPrice < 200000);
-      } else if (priceFilter === '200k-500k') {
-        matchPrice = (cardPrice >= 200000 && cardPrice <= 500000);
-      } else if (priceFilter === '500k+') {
-        matchPrice = (cardPrice > 500000);
-      }
-
-      if (matchCounty && matchAcreage && matchZoning && matchPrice) {
+      if (matchesQuery) {
         card.style.display = 'flex';
         setTimeout(() => {
           card.classList.remove('fade-out');
         }, 10);
+        matchCount++;
       } else {
         card.classList.add('fade-out');
         setTimeout(() => {
@@ -224,15 +262,18 @@ function initMockSearch() {
       }
     });
 
-    // Reset tab active states since manual custom filters are run
-    tabs.forEach(t => t.classList.remove('active'));
-    const defaultTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === countyFilter);
-    if (defaultTab) {
-      defaultTab.classList.add('active');
-    } else {
-      const allTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === 'all');
-      if (allTab) allTab.classList.add('active');
+    if (matchCount === 0 && gridContainer) {
+      const msg = document.createElement('div');
+      msg.className = 'no-results-msg text-center';
+      msg.style.cssText = 'grid-column: 1/-1; color: var(--clr-text-light); padding: 4rem 2rem; width: 100%;';
+      msg.innerHTML = '<h3 style="font-family: var(--font-serif); color: var(--clr-primary); margin-bottom: 10px;">No Properties Found</h3><p>We couldn\'t find any properties matching "' + query + '". Try searching for "Cochise", "Yavapai", "RU-4", or "acres".</p>';
+      gridContainer.appendChild(msg);
     }
+
+    // Reset county tab active states since manual custom filter is run
+    tabs.forEach(t => t.classList.remove('active'));
+    const allTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === 'all');
+    if (allTab) allTab.classList.add('active');
 
     // Scroll smoothly to properties results area
     const resultsSec = document.getElementById('listings-section');
@@ -240,6 +281,7 @@ function initMockSearch() {
       resultsSec.scrollIntoView({ behavior: 'smooth' });
     }
   });
+};
 
   // Lead capture forms mock redirect/completion alert
   const leadForms = document.querySelectorAll('.lead-form');
