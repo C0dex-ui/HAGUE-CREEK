@@ -96,8 +96,10 @@ h1, h2, h3, h4, .font-serif {
 }
 
 h1 {
+  font-family: var(--font-sans);
   font-size: var(--fs-h1);
   letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 h2 {
