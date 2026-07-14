@@ -2089,7 +2089,7 @@ body.body-locked {
   background-image: linear-gradient(to right, rgba(27, 57, 66, 0.92) 0%, rgba(27, 57, 66, 0.92) 100%), url('assets/images/arizona_ranch_hero.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll, fixed; /* Multi-layer background: gradient scrolls, image is fixed in place */
 }
 
 .napa-services-section .services-header h2 {
