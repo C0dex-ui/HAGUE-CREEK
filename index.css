@@ -2157,7 +2157,7 @@ body.body-locked {
 /* Used on: Dedication, Listings, Services, Explorations */
 .dedication-section .bg-topo-overlay,
 .listings-grid-section .bg-topo-overlay {
-  opacity: 0.09;
+  opacity: 0.11;
   background-image: url('assets/images/pattern_topo_map.webp');
   background-size: 700px auto;
   background-attachment: fixed;
