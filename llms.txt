@@ -1,0 +1,36 @@
+# Hague Creek Land Brokerage
+
+Hague Creek is a specialized Arizona-based rural land and ranch brokerage helping clients buy, sell, and invest in premium ranches, agricultural parcels, and rural acreage across Arizona.
+
+## Contact Information
+- **Name:** Hague Creek Land Brokerage
+- **Designated Broker & Owner:** Arthur Hague (AZ DRE License #BR654321000)
+- **Physical Address:** 100 E Congress St, Suite 300, Tucson, AZ 85701
+- **Phone:** +1-520-555-0190
+- **Operating Hours:** Mon-Fri 08:00 AM - 05:00 PM MST
+
+## Core Services & Focus Areas
+- **Ranch & Legacy Lands:** Rural ranches, livestock grazing tracts, and recreational acreage.
+- **Agricultural Investments:** Crop farming acreage, irrigation basins, and water rights valuation.
+- **Due Diligence Support:** APN verification, boundary analysis, topography maps, zoning regulations, and LandID map configuration.
+
+## Service Regions
+- Cochise County, AZ
+- Pima County, AZ
+- Yavapai County, AZ
+- Santa Cruz County, AZ
+- Maricopa County, AZ
+- Tucson metro, AZ
+- Phoenix metro, AZ
+
+## Main Navigation / Sitemap Pages
+- **Home Page** - https://dev.haguecreek.com/
+  - Main landing index targeting Arizona land broker services. Features an interactive land filter widget, landowner testimonials, featured active/sold portfolios, and direct lead consultation triggers.
+- **About** - https://dev.haguecreek.com/#about-section
+  - Broker profile for Arthur Hague, credentials, license details, and specialized land valuation experience.
+- **Properties** - https://dev.haguecreek.com/#listings-section
+  - Searchable portfolio of active listings (e.g. Coyote Ridge Ranch) and sold inventory (e.g. San Pedro Ag Valley) detailing APNs, zoning, and water specs.
+- **Resources & FAQs** - https://dev.haguecreek.com/#faq-section
+  - Local land resources answering common questions on Arizona groundwater basins, AMAs, raw land financing, and interactive mapping.
+- **Contact** - https://dev.haguecreek.com/#contact-section
+  - Consultation questionnaire and phone details for routing inquiries directly.

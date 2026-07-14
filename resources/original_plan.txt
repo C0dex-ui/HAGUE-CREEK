@@ -1,0 +1,186 @@
+The original plan was to build the land broker’s website as a *custom WordPress property-marketing platform*, not as a conventional residential real estate site. The properties would be managed as structured listings, with each parcel having its own optimized landing page, maps, documents, photography, video, and lead-capture tools.
+
+## Development plan
+
+### 1. WordPress as the main platform
+
+The site would be developed in WordPress so the brokerage could:
+
+- Add and edit properties internally
+- Mark listings as available, pending, or sold
+- Upload photos, videos, brochures, and maps
+- Create new listing pages without rebuilding layouts
+- Publish market reports, articles, and area pages
+- Control SEO metadata for every property
+
+The site was not intended to depend entirely on an MLS or IDX feed. Land properties often need substantially more custom information than a standard MLS template provides.
+
+## 2. Custom property-listing system
+
+Each property would be created as a *custom post type*, such as “Properties” or “Land Listings,” rather than as a normal WordPress page or blog post.
+
+Each listing would include structured fields for:
+
+- Property name
+- Status
+- Price
+- Acreage
+- County and state
+- Property type
+- APN or parcel number
+- GPS coordinates
+- Zoning
+- Utilities
+- Water rights
+- Mineral rights
+- Access and road information
+- Topography
+- Improvements
+- Property taxes
+- Maps and downloadable documents
+- Broker contact information
+- Photo gallery
+- Drone video
+- 360-degree tour
+- Inquiry form
+
+This structure would allow the website to automatically create consistent listing pages, search results, filters, featured-property sections, and archives.
+
+## 3. Listing-management plugins
+
+The most likely WordPress stack was:
+
+### Advanced Custom Fields Pro
+
+Used to create the structured property fields.
+
+This would control acreage, pricing, location, maps, documents, property status, videos, and the other land-specific information.
+
+### Custom Post Type UI or custom-coded post types
+
+Used to create the property-listing content type.
+
+For a higher-quality implementation, I would now recommend registering the custom post type and taxonomies in a small custom plugin instead of relying entirely on Custom Post Type UI.
+
+### FacetWP
+
+Used for advanced property search and filtering.
+
+Visitors could filter listings by:
+
+- State
+- County
+- Price
+- Acreage
+- Property type
+- Status
+- Recreational use
+- Agricultural use
+- Development potential
+
+FacetWP is better suited to this project than a generic real estate search plugin because the filtering can be customized around land attributes.
+
+## 4. LandID mapping integration
+
+A major part of the strategy was integrating *LandID* or a similar land-mapping platform.
+
+We will have a subscription with them and LandID will generate a link or embed code that will be input on the listing entry form for it to display on the screen.
+
+Thumbnails will be have to be generated out of screenshots to be uploaded to the listing entry system as well for each map.
+
+## 5. Property detail pages
+
+Every listing would have a dedicated, indexable URL, for example:
+
+domain.com/properties/ranch-name-county-state/
+
+The page structure would likely include:
+
+1. Hero image and key property information  
+2. Property overview  
+3. Price, acreage, location, and status  
+4. Interactive LandID map  
+5. Detailed property description  
+6. Features and improvements  
+7. Water, utilities, zoning, and access  
+8. Photo gallery  
+9. Drone video  
+10. 360-degree property tour  
+11. Downloadable brochure and documents  
+12. Inquiry form  
+13. Broker contact information  
+14. Related properties  
+
+The listing pages would be designed as sales pages, not simply database records.
+
+## 6. Insta360 and video strategy
+
+The broker could upload or embed:
+
+- YouTube videos
+- Vimeo videos
+- Drone footage
+- Matterport tours
+- Insta360 share links
+- Other 360-degree tour platforms
+
+The recommended strategy was to host the heavy video and interactive-tour content externally and embed it on the property page. Uploading large video files directly into WordPress would create unnecessary hosting, storage, and performance problems.
+
+## 7. Printable property brochures
+
+The site would support professional print-friendly listing pages or downloadable PDFs.
+
+### Automatically generated PDF
+
+WordPress generates a brochure using the information already entered into the property listing.
+
+Possible tools:
+
+- Gravity PDF
+- E2PDF
+- PDF Generator for WordPress
+- Custom HTML-to-PDF solution
+
+The most practical solution would be a hybrid:
+
+- An automatically generated property sheet for every listing
+- An optional professionally designed brochure for premium properties
+
+The idea is that the PDFs will be generated when the visitor clicks a button. This will present the most up-to-date information and the visitor will be able to download the PDF with all the specs for the property. It is necessary for the visitor to enter name and email when generating PDF. The PDF most have a timestamp with the date and time of the download for information accuracy. 
+
+## 9. Inquiry and lead-routing system
+
+Each property would have its own inquiry form so the broker would know exactly which listing generated the lead.
+
+- Gravity Forms
+
+Gravity Forms would probably be the strongest fit because of its integrations, conditional fields, notifications, PDF capability, and dependable record storage.
+
+The form would capture:
+
+- Name
+- Email
+- Phone
+- Property of interest
+- Intended use
+- Preferred acreage
+- Budget range
+- Timeline
+- Message
+- Source or campaign
+
+## 10. Listing-status workflow
+
+Properties would use a controlled status taxonomy:
+
+- Available
+- Under contract
+- Pending
+- Sold
+- Off market
+
+Sold properties would generally remain online rather than being deleted.
+
+A sold listing can demonstrate transaction history, build brokerage credibility, attract owners with similar properties, and continue appearing in search results. The page would be updated to show that the property is sold and direct users toward comparable active listings.
+
+The site would not be just a catalog of current listings. It would also create long-term value through sold-property pages, county pages, property-type pages, educational content, downloadable materials, and a growing database of land-market information.

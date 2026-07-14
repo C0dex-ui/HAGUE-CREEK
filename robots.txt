@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap URL
+Sitemap: https://dev.haguecreek.com/sitemap.xml
+
+# LLM Crawler context specification
+llms: https://dev.haguecreek.com/llms.txt
