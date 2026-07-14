@@ -3140,9 +3140,10 @@ body.body-locked {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 6rem;
-  height: 70vh;
-  position: relative;
+  align-self: start;
+  position: sticky;
+  top: 6rem;
+  padding-top: 2rem;
   z-index: 2;
 }
 

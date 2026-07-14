@@ -541,17 +541,7 @@ function initExplorationsParallax() {
   const leftPanel = document.getElementById('explorations-left-panel');
   if (!pinContainer || !leftPanel) return;
 
-  // Pin the left panel as the user scrolls past the gallery
-  ScrollTrigger.create({
-    trigger: '#explorations-section',
-    start: 'top top',
-    end: () => {
-      const section = document.getElementById('explorations-section');
-      return '+=' + (section.offsetHeight - leftPanel.offsetHeight);
-    },
-    pin: '#explorations-left-panel',
-    pinSpacing: false
-  });
+  // Left panel uses CSS position:sticky — no GSAP pin needed
 
   // Animate left column upwards relative to scroll
   gsap.fromTo('.parallax-column.col-left', 
