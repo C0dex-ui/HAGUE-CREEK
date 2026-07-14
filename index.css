@@ -3113,7 +3113,7 @@ body.body-locked {
   color: var(--clr-bg-white);
   padding: 12vh 0;
   min-height: 170vh;
-  overflow: hidden;
+  overflow-x: clip;
   border-bottom: 1px solid var(--clr-border-gold);
   z-index: 1;
 }
