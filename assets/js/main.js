@@ -545,7 +545,10 @@ function initExplorationsParallax() {
   ScrollTrigger.create({
     trigger: '#explorations-section',
     start: 'top top',
-    end: 'bottom bottom',
+    end: () => {
+      const section = document.getElementById('explorations-section');
+      return '+=' + (section.offsetHeight - leftPanel.offsetHeight);
+    },
     pin: '#explorations-left-panel',
     pinSpacing: false
   });
