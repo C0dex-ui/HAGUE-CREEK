@@ -3142,8 +3142,7 @@ body.body-locked {
   align-items: flex-start;
   align-self: start;
   position: sticky;
-  top: 50vh;
-  transform: translateY(-50%);
+  top: calc(50vh - 180px);
   z-index: 2;
 }
 
