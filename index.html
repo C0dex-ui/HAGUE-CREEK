@@ -4,27 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Primary SEO Tags -->
-  <title>Arizona Land Broker | Hague Creek Land Brokerage Agency</title>
-  <meta name="description" content="Find premium ranches, agricultural parcels, and land for sale in Arizona. Partner with Hague Creek, the top Arizona land broker for expert service.">
+  <!-- Primary SEO Tags — primary keyword: Arizona land broker -->
+  <title>Arizona Land Broker | Hague Creek Land Brokerage Tucson</title>
+  <meta name="description" content="Work with a trusted Arizona land broker for ranches, agricultural parcels, and rural land for sale. Hague Creek serves Tucson and statewide acreage.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dev.haguecreek.com/">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dev.haguecreek.com/">
-  <meta property="og:title" content="Arizona Land Broker | Hague Creek Land Brokerage Agency">
-  <meta property="og:description" content="Find premium ranches, agricultural parcels, and land for sale in Arizona. Partner with Hague Creek, the top Arizona land broker for expert service.">
+  <meta property="og:title" content="Arizona Land Broker | Hague Creek Land Brokerage Tucson">
+  <meta property="og:description" content="Work with a trusted Arizona land broker for ranches, agricultural parcels, and rural land for sale. Hague Creek serves Tucson and statewide acreage.">
   <meta property="og:image" content="https://dev.haguecreek.com/assets/images/arizona_ranch_hero.webp">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://dev.haguecreek.com/">
-  <meta name="twitter:title" content="Arizona Land Broker | Hague Creek Land Brokerage Agency">
-  <meta name="twitter:description" content="Find premium ranches, agricultural parcels, and land for sale in Arizona. Partner with Hague Creek, the top Arizona land broker for expert service.">
+  <meta name="twitter:title" content="Arizona Land Broker | Hague Creek Land Brokerage Tucson">
+  <meta name="twitter:description" content="Work with a trusted Arizona land broker for ranches, agricultural parcels, and rural land for sale. Hague Creek serves Tucson and statewide acreage.">
   <meta name="twitter:image" content="https://dev.haguecreek.com/assets/images/arizona_ranch_hero.webp">
+
+  <!-- LCP preload (hero poster) -->
+  <link rel="preload" as="image" href="assets/images/arizona_ranch_hero.webp" type="image/webp">
  
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="index.css?v=1.2.1">
+  <link rel="stylesheet" href="index.css?v=3.6.0">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -138,10 +142,18 @@
         "inLanguage": "en-US"
       },
       {
+        "@type": "ImageObject",
+        "@id": "https://dev.haguecreek.com/#hero",
+        "url": "https://dev.haguecreek.com/assets/images/arizona_ranch_hero.webp",
+        "width": 1920,
+        "height": 1080,
+        "caption": "Arizona land broker ranch landscape served by Hague Creek"
+      },
+      {
         "@type": "WebPage",
         "@id": "https://dev.haguecreek.com/#webpage",
         "url": "https://dev.haguecreek.com/",
-        "name": "Arizona Land Broker | Hague Creek Land Brokerage Agency",
+        "name": "Arizona Land Broker | Hague Creek Land Brokerage Tucson",
         "isPartOf": { "@id": "https://dev.haguecreek.com/#website" },
         "about": { "@id": "https://dev.haguecreek.com/#localbusiness" },
         "primaryImageOfPage": { "@id": "https://dev.haguecreek.com/#hero" },
@@ -239,77 +251,84 @@
 </head>
 <body>
 
-  <!-- Premium Loading Screen -->
+  <!-- Preloader -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-top-left">HAGUE CREEK</div>
-    <div class="preloader-center">
-      <div class="rotating-word-container">
-        <span class="rotating-word active">ACQUIRE</span>
-        <span class="rotating-word">ASSESS</span>
-        <span class="rotating-word">SECURE</span>
-        <span class="rotating-word">REPRESENT</span>
-      </div>
+    <div class="preloader-brand">Hague Creek</div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
     </div>
-    <div class="preloader-counter-wrap">
-      <span class="preloader-counter" id="preloader-counter">000</span>
-    </div>
-    <div class="preloader-progress-bar">
-      <div class="preloader-progress-inner" id="preloader-bar-fill"></div>
-    </div>
+    <div class="preloader-count" id="preloader-counter">000</div>
   </div>
 
-  <!-- Custom Interactive Magnetic Cursor (Mouse-Follower) -->
-  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
-    <div class="custom-cursor-circle"></div>
-    <span class="custom-cursor-text"></span>
-  </div>
+  <!-- Scroll progress (premium motion cue) -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Background Architectural Grid Lines (Motionsites.ai Inspired) -->
-  <div class="bg-grid-lines" aria-hidden="true">
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-  </div>
-
-  <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Header Navigation (90px height standard, split-nav template) -->
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-pulse" aria-hidden="true"></span>
+        <span class="top-bar-live"><strong>6 parcels</strong> currently available · LandID mapped</span>
+        <a href="tel:+15205550190" class="top-bar-phone">+1 (520) 555-0190</a>
+      </div>
+      <div class="top-bar-right">
+        <span>Tucson HQ · AZ DRE# BR654321000</span>
+        <a href="#contact-section" class="top-bar-cta">Free Land Evaluation →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header — centered logo + sitemap -->
   <header class="header-nav" id="header-nav">
-    <div class="nav-container split-nav">
-      
-      <!-- Left Menu -->
-      <nav class="nav-left" aria-label="Left Navigation">
+    <div class="container nav-container split-nav">
+      <!-- Left: Home · About · Properties -->
+      <nav class="nav-side nav-left" aria-label="Primary left">
         <ul class="nav-menu">
-          <li class="nav-item"><a href="#hero-section" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="#listings-section" class="nav-link">Listings</a></li>
-          <li class="nav-item"><a href="#services-section" class="nav-link">Services</a></li>
-        </ul>
-      </nav>
-
-      <!-- Center Logo -->
-      <a href="index.html" class="logo-link logo-center" aria-label="Hague Creek Home">
-        HAGUE<span>CREEK</span>
-      </a>
-
-      <!-- Right Menu -->
-      <nav class="nav-right" aria-label="Right Navigation">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="#about-section" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#faq-section" class="nav-link">FAQ</a></li>
-          <li class="nav-item"><a href="#contact-section" class="nav-link">Contact</a></li>
-          <li class="nav-item nav-phone-item">
-            <a href="tel:+15205550190" class="nav-link nav-phone-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              +1 (520) 555-0190
+          <li><a href="#hero-section" class="nav-link">Home</a></li>
+          <li><a href="#about-section" class="nav-link">About</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="#listings-section" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Properties
+              <svg class="nav-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </a>
+            <ul class="nav-dropdown" aria-label="Properties submenu">
+              <li><a href="#listings-section" class="nav-dropdown-link" data-jump-filter="available">Available Properties</a></li>
+              <li><a href="#listings-section" class="nav-dropdown-link" data-jump-filter="sold">Sold Properties</a></li>
+            </ul>
           </li>
         </ul>
       </nav>
 
-      <!-- Hamburger Menu Toggle for Mobile -->
+      <!-- Center logo -->
+      <a href="index.html" class="logo-link logo-center" aria-label="Hague Creek Home">
+        <img src="assets/images/logo.png" alt="Hague Creek Arizona land broker logo" class="nav-logo-img" width="160" height="48">
+      </a>
+      <a href="tel:+15205550190" class="nav-phone-mobile" aria-label="Call Hague Creek">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+
+      <!-- Right: Resources · Testimonials · Blog · Contact -->
+      <nav class="nav-side nav-right" aria-label="Primary right">
+        <ul class="nav-menu">
+          <li class="nav-item has-dropdown">
+            <a href="#blog-section" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Resources
+              <svg class="nav-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <ul class="nav-dropdown" aria-label="Resources submenu">
+              <li><a href="#blog-section" class="nav-dropdown-link">Buying Land</a></li>
+              <li><a href="#faq-section" class="nav-dropdown-link">Financing</a></li>
+              <li><a href="#faq-section" class="nav-dropdown-link">Frequently Asked Questions</a></li>
+            </ul>
+          </li>
+          <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
+          <li><a href="#blog-section" class="nav-link">Blog</a></li>
+          <li><a href="#contact-section" class="nav-link nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+
       <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -318,1113 +337,822 @@
     </div>
   </header>
 
-  <!-- Mobile Sitemap Slide-out Panel -->
   <div class="mobile-nav-panel" id="mobile-nav-menu" aria-hidden="true">
     <nav aria-label="Mobile Navigation">
       <ul class="mobile-menu">
         <li><a href="#hero-section" class="mobile-menu-link">Home</a></li>
-        <li><a href="#listings-section" class="mobile-menu-link">Listings</a></li>
-        <li><a href="#services-section" class="mobile-menu-link">Services</a></li>
-        <li><a href="#about-section" class="mobile-menu-link">About Broker</a></li>
-        <li><a href="#faq-section" class="mobile-menu-link">FAQ / Due Diligence</a></li>
+        <li><a href="#about-section" class="mobile-menu-link">About</a></li>
+        <li class="mobile-has-sub">
+          <button type="button" class="mobile-sub-toggle" aria-expanded="false">
+            Properties
+            <svg class="nav-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <ul class="mobile-sub-menu">
+            <li><a href="#listings-section" class="mobile-menu-link" data-jump-filter="available">Available Properties</a></li>
+            <li><a href="#listings-section" class="mobile-menu-link" data-jump-filter="sold">Sold Properties</a></li>
+          </ul>
+        </li>
+        <li class="mobile-has-sub">
+          <button type="button" class="mobile-sub-toggle" aria-expanded="false">
+            Resources
+            <svg class="nav-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <ul class="mobile-sub-menu">
+            <li><a href="#blog-section" class="mobile-menu-link">Buying Land</a></li>
+            <li><a href="#faq-section" class="mobile-menu-link">Financing</a></li>
+            <li><a href="#faq-section" class="mobile-menu-link">Frequently Asked Questions</a></li>
+          </ul>
+        </li>
+        <li><a href="#testimonials-section" class="mobile-menu-link">Testimonials</a></li>
+        <li><a href="#blog-section" class="mobile-menu-link">Blog</a></li>
         <li><a href="#contact-section" class="mobile-menu-link">Contact</a></li>
       </ul>
     </nav>
     <div class="mobile-contact-info">
-      <p class="mobile-nav-title">Hague Creek Land Brokerage</p>
+      <p><strong>Hague Creek Land Brokerage</strong></p>
       <p>Phone: <a href="tel:+15205550190">+1 (520) 555-0190</a></p>
     </div>
   </div>
 
   <main id="main-content">
-    
-    <!-- Hero Section -->
-    <section class="hero" id="hero-section">
-      <div class="bg-topo-overlay"></div>
-      <!-- Background Video (Autoplay, Loop, Muted) -->
+
+    <!-- 1. Hero — centered, minimal premium (hero4 reference) -->
+    <section class="hero hero-centered" id="hero-section">
       <video autoplay muted loop playsinline class="hero-bg-video" poster="assets/images/arizona_ranch_hero.webp" id="hero">
         <source src="assets/hague_bg_video.mp4" type="video/mp4">
-        <img src="assets/images/arizona_ranch_hero.webp" alt="Arizona Land Broker - Hague Creek Drone Landscape" class="hero-bg">
       </video>
+      <img src="assets/images/arizona_ranch_hero.webp" alt="" class="hero-bg" aria-hidden="true" style="display:none">
       <div class="hero-overlay"></div>
-      <div class="container hero-content-wrapper text-center">
-        <div class="hero-inner">
-          <span class="hero-dre-num reveal">AZ DRE# BR654321000</span>
-          <h1 class="reveal delay-1">Top Arizona Land &amp; Ranch Listings</h1>
-          
-          <!-- Tab Navigation -->
-          <div class="hero-tabs reveal delay-2">
-            <button class="hero-tab active">For Sale</button>
-            <button class="hero-tab">Off-Market</button>
-          </div>
+      <div class="hero-vignette" aria-hidden="true"></div>
 
-          <!-- Pill Search Widget -->
-          <div class="hero-search-wrapper reveal delay-3">
-            <form class="hero-search-form" id="hero-search-form">
-              <div class="search-input-container">
-                <svg class="search-icon-inside" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="hero-search-input" placeholder="Search by county, zoning code, acreage, or keyword..." class="search-input-pill" required>
-              </div>
-              <button type="submit" class="search-btn-gold">
-                <svg class="btn-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                Search
-              </button>
-            </form>
+      <div class="hero-content hero-content-center">
+        <div class="hero-pill">
+          <span class="hero-pill-dot" aria-hidden="true"></span>
+          Rural Community Specialists · Tucson, AZ
+        </div>
+
+        <h1>Arizona Land Broker for<br><em>Ranch &amp; Rural</em><br>Properties</h1>
+
+        <a href="#listings-section" class="hero-explore">Explore</a>
+
+        <form class="hero-search" id="hero-search-form" role="search">
+          <div class="search-field">
+            <label for="search-location">Search by location</label>
+            <input type="text" id="search-location" name="location" placeholder="County, city, or keyword…">
+          </div>
+          <div class="search-field">
+            <label for="search-type">Property type</label>
+            <select id="search-type" name="type">
+              <option value="">All types</option>
+              <option value="ranch">Ranch Land</option>
+              <option value="agriculture">Agricultural</option>
+              <option value="recreational">Recreational</option>
+              <option value="riverfront">Riverfront</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label for="search-category">Categories</label>
+            <select id="search-category" name="category">
+              <option value="">All statuses</option>
+              <option value="available">For Sale</option>
+              <option value="pending">Pending</option>
+              <option value="sold">Sold</option>
+            </select>
+          </div>
+          <button type="submit" class="hero-search-btn">Search</button>
+        </form>
+
+        <p class="hero-license">AZ DRE# BR654321000 · Hague Creek Land Brokerage</p>
+      </div>
+
+      <a href="#welcome-section" class="hero-scroll" aria-label="Scroll to welcome">
+        <span>Scroll</span>
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- Welcome — clean unified first band (greeting + proof + trust) -->
+    <section class="welcome-section section-pattern section-pattern-topo" id="welcome-section" aria-labelledby="welcome-heading">
+      <div class="container welcome-wrap">
+        <header class="welcome-header">
+          <span class="eyebrow">Hague Creek Land Brokerage</span>
+          <h2 id="welcome-heading">Welcome to Hague Creek</h2>
+          <p class="welcome-lead">
+            A specialized <strong>Arizona land broker</strong> for ranches, agricultural parcels, and rural acreage across Tucson, Pima, Cochise, Yavapai, and statewide markets.
+          </p>
+        </header>
+
+        <div class="welcome-metrics" id="stats-strip" aria-label="Brokerage highlights">
+          <div class="welcome-metric">
+            <span class="welcome-metric-value"><span class="count-up" data-target="12000" data-suffix="+">0</span></span>
+            <span class="welcome-metric-label">Acres represented</span>
+          </div>
+          <div class="welcome-metric">
+            <span class="welcome-metric-value">$<span class="count-up" data-target="48" data-suffix="M">0</span></span>
+            <span class="welcome-metric-label">In land sales</span>
+          </div>
+          <div class="welcome-metric">
+            <span class="welcome-metric-value"><span class="count-up" data-target="200" data-suffix="+">0</span></span>
+            <span class="welcome-metric-label">Satisfied clients</span>
+          </div>
+          <div class="welcome-metric">
+            <span class="welcome-metric-value"><span class="count-up" data-target="25" data-suffix="+">0</span></span>
+            <span class="welcome-metric-label">Years experience</span>
           </div>
         </div>
+
+        <ul class="welcome-trust" aria-label="Credentials">
+          <li>AZ DRE# BR654321000</li>
+          <li>Water-rights diligence</li>
+          <li>LandID mapping</li>
+          <li>APN &amp; survey checks</li>
+        </ul>
       </div>
     </section>
 
-    <!-- NAPA Accredited Trust badges strip -->
-    <section class="trust-strip-section">
-      <div class="bg-topo-overlay"></div>
-      <div class="container trust-strip-container">
-        <div class="trust-badge">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <div>
-            <div class="trust-badge-title">AZ DRE Compliant</div>
-            <div class="trust-badge-desc">License #BR654321000</div>
-          </div>
-        </div>
-        <div class="trust-badge">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-          <div>
-            <div class="trust-badge-title">ALC Candidate</div>
-            <div class="trust-badge-desc">Accredited Specialists</div>
-          </div>
-        </div>
-        <div class="trust-badge">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          <div>
-            <div class="trust-badge-title">BBB A+ Rated</div>
-            <div class="trust-badge-desc">Local Brokerage Authority</div>
-          </div>
-        </div>
-        <div class="trust-badge">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <div>
-            <div class="trust-badge-title">100% Satisfaction</div>
-            <div class="trust-badge-desc">Guaranteed Representation</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dedicated Core Mission Section -->
-    <section class="dedication-section bg-warm">
-      <div class="bg-topo-overlay"></div>
-      <div class="container text-center dedication-container reveal">
-        <span class="eyebrow">Our Core Mission</span>
-        <h2 class="dedication-title">Dedicated to the Arizona Land Legacy</h2>
-        <p class="dedication-text">
-          Hague Creek Land Brokerage is a specialized Arizona land broker helping clients buy, sell, and invest in premium ranches, agricultural parcels, and rural acreage throughout Arizona. Backed by generations of agricultural expertise and local land knowledge, we connect buyers with land for sale in Arizona that fits their vision.
-        </p>
-      </div>
-    </section>
-
-    <!-- County Tab Filter Section ("Find Listings by City" NAPA Layout) -->
-    <section id="listings-section" class="listings-grid-section">
-      <div class="bg-topo-overlay"></div>
+    <!-- Featured parcel (single strong moment) -->
+    <section class="spotlight-section section-pattern section-pattern-topo" id="featured-section" aria-labelledby="spotlight-heading">
       <div class="container">
-        <div class="section-header text-center reveal">
-          <span class="eyebrow">Find Listings by County</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Featured Arizona Land Portfolio</span></h2>
-          <p>Explore our active property inventory categorized by geographic focus regions across Arizona.</p>
+        <div class="spotlight-layout reveal">
+          <div class="spotlight-media">
+            <img src="assets/images/coyote_ridge_listing.webp" alt="Coyote Ridge Ranch land for sale Cochise County Arizona" width="900" height="600" loading="lazy">
+            <span class="spotlight-badge badge badge-featured">Featured</span>
+            <span class="spotlight-price-pill">$320,000</span>
+          </div>
+          <div class="spotlight-copy">
+            <span class="eyebrow">Featured listing</span>
+            <h2 id="spotlight-heading">Coyote Ridge Ranch</h2>
+            <p class="spotlight-loc">Cochise County, Arizona · 40 acres · RU-4 · Shared well</p>
+            <p class="spotlight-desc">A diligence-ready ranch parcel with foothill views, LandID mapping, and clear access notes — built for buyers who want certainty before they write an offer.</p>
+            <ul class="spotlight-facts">
+              <li><strong>40</strong> acres</li>
+              <li><strong>RU-4</strong> zoning</li>
+              <li><strong>Shared well</strong></li>
+              <li><strong>Available</strong></li>
+            </ul>
+            <div class="spotlight-actions">
+              <a href="#contact-section" class="btn btn-accent">Request details</a>
+              <a href="#listings-section" class="btn btn-outline">View all listings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Best listings -->
+    <section id="listings-section" class="listings-section">
+      <div class="container">
+
+        <div class="listings-head reveal">
+          <div class="listings-head-copy">
+            <span class="eyebrow">Finest Portfolio</span>
+            <h2>Best Arizona Land Listings Available</h2>
+            <p>Ranches and rural acreage reviewed for water, access, zoning, and APN accuracy.</p>
+          </div>
+          <div class="listings-head-meta">
+            <div class="listings-count-card">
+              <span class="listings-count-num" id="listings-count">8</span>
+              <span class="listings-count-label">Properties in portfolio</span>
+            </div>
+            <a href="#contact-section" class="btn btn-primary">Request a private search</a>
+          </div>
         </div>
 
-        <!-- County Navigation Tabs -->
-        <div class="county-tabs-wrapper reveal">
-          <button class="county-tab active" data-filter="all">All Counties</button>
-          <button class="county-tab" data-filter="cochise">Cochise County</button>
-          <button class="county-tab" data-filter="yavapai">Yavapai County</button>
-          <button class="county-tab" data-filter="pima">Pima County</button>
-        </div>
-        
-        <div class="listings-grid">
-          
-          <!-- Listing 1 (Cochise - Available) -->
-          <article class="listing-card reveal" data-county="cochise">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-available">Available</span>
-              <img src="assets/images/coyote_ridge_listing.webp" alt="Coyote Ridge Ranch - Land for sale in Arizona" class="listing-image" width="360" height="240" loading="lazy">
+        <div class="listings-toolbar reveal">
+          <div class="filter-group" role="tablist" aria-label="Filter by status">
+            <span class="filter-group-label">Status</span>
+            <div class="filter-tabs">
+              <button type="button" class="filter-tab active" data-filter="all">All</button>
+              <button type="button" class="filter-tab" data-filter="available">For Sale</button>
+              <button type="button" class="filter-tab" data-filter="pending">Pending</button>
+              <button type="button" class="filter-tab" data-filter="sold">Sold</button>
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+        </div>
+
+        <div class="listings-results-bar">
+          <p id="listings-results-text">Showing <strong>4</strong> of <strong>8</strong> listings</p>
+          <p class="listings-results-note">LandID mapped · Water diligence noted on active inventory</p>
+        </div>
+
+        <div class="listings-grid stagger-children" id="listings-grid">
+
+          <article class="listing-card" data-status="available" data-county="cochise" data-type="ranch" data-search="coyote ridge ranch cochise ru-4 shared well">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-featured">Featured</span>
+                <span class="badge badge-sale">For Sale</span>
+              </div>
+              <img src="assets/images/coyote_ridge_listing.webp" alt="Coyote Ridge Ranch land for sale in Cochise County Arizona" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Request info</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Coyote Ridge Ranch">PDF specs</button>
+              </div>
+              <img src="assets/images/broker_portrait.webp" alt="Listing agent Arthur Hague" class="listing-agent-avatar" width="48" height="48" loading="lazy">
+            </div>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Cochise County, AZ
-              </div>
-              <h3 class="listing-title">Coyote Ridge Ranch</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">40 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-4</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">305-12-004B</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Shared Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Coyote Ridge Ranch</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$320,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Coyote Ridge Ranch">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$8,000 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>40 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-4</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Shared Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">APN ready</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 2 (Yavapai - Available) -->
-          <article class="listing-card reveal" data-county="yavapai">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-available">Available</span>
-              <img src="assets/images/verde_river_listing.webp" alt="Verde River Farm - Agriculture land for sale in Arizona" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card" data-status="available" data-county="yavapai" data-type="agriculture" data-search="verde river farm yavapai ru-36 irrigation">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-featured">Featured</span>
+                <span class="badge badge-sale">For Sale</span>
+              </div>
+              <img src="assets/images/verde_river_listing.webp" alt="Verde River Farm agricultural land for sale in Yavapai County" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Request info</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Verde River Farm">PDF specs</button>
+              </div>
+              <img src="assets/images/sam_daniels_portrait.webp" alt="Listing agent Sam Daniels" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Yavapai County, AZ
-              </div>
-              <h3 class="listing-title">Verde River Farm</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">80 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-36</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">402-08-115A</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Irrig. Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Verde River Farm</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$420,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Verde River Farm">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$5,250 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>80 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-36</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Irrig. Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Irrigation verified</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 3 (Pima - Sold) -->
-          <article class="listing-card reveal" data-county="pima">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-sold">Sold History</span>
-              <img src="assets/images/san_pedro_listing.webp" alt="San Pedro Valley Estate - Sold rural property in Arizona" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card" data-status="sold" data-county="pima" data-type="ranch" data-search="san pedro valley pima sold estate">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-sold">Sold</span>
+              </div>
+              <img src="assets/images/san_pedro_listing.webp" alt="San Pedro Valley estate sold rural property in Arizona" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Similar parcels</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="San Pedro Valley">Case study</button>
+              </div>
+              <img src="assets/images/sarah_miller_portrait.webp" alt="Listing agent Sarah Miller" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Pima County, AZ
-              </div>
-              <h3 class="listing-title">San Pedro Valley</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">160 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">General Rural</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">208-14-0020</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Irrig. Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">San Pedro Valley</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$640,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="San Pedro Valley">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">Closed</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>120 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>Rural</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Private Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Track record</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 4 (Cochise - Available) -->
-          <article class="listing-card reveal" data-county="cochise">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-available">Available</span>
-              <img src="assets/images/apache_pass_listing.webp" alt="Apache Pass Parcel - Cochise County Arizona land" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card" data-status="available" data-county="cochise" data-type="recreational" data-search="apache pass parcel cochise recreational">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-sale">For Sale</span>
+              </div>
+              <img src="assets/images/apache_pass_listing.webp" alt="Apache Pass Parcel Cochise County Arizona land" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Request info</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Apache Pass Parcel">PDF specs</button>
+              </div>
+              <img src="assets/images/broker_portrait.webp" alt="Listing agent Arthur Hague" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Cochise County, AZ
-              </div>
-              <h3 class="listing-title">Apache Pass Parcel</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">20 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-4</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">305-15-010C</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Open Basin</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Apache Pass Parcel</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$180,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Apache Pass Parcel">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$9,000 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>20 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-4</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Open Basin</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Recreational</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 5 (Yavapai - Available) -->
-          <article class="listing-card reveal" data-county="yavapai">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-available">Available</span>
-              <img src="assets/images/red_rock_listing.webp" alt="Red Rock Valley - Yavapai County Arizona land" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card is-hidden-initial" data-status="available" data-county="yavapai" data-type="ranch" data-search="red rock valley yavapai ranch">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-featured">Featured</span>
+                <span class="badge badge-sale">For Sale</span>
+              </div>
+              <img src="assets/images/red_rock_listing.webp" alt="Red Rock Valley Yavapai County Arizona land" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Request info</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Red Rock Valley">PDF specs</button>
+              </div>
+              <img src="assets/images/sam_daniels_portrait.webp" alt="Listing agent Sam Daniels" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Yavapai County, AZ
-              </div>
-              <h3 class="listing-title">Red Rock Valley</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">120 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-36</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">402-12-088B</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Shared Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Red Rock Valley</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$550,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Red Rock Valley">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$5,789 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>95 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-36</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Shared Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Dramatic terrain</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 6 (Pima - Available) -->
-          <article class="listing-card reveal" data-county="pima">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-available">Available</span>
-              <img src="assets/images/santa_cruz_listing.webp" alt="Santa Cruz Basin - Pima County Arizona land" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card is-hidden-initial" data-status="available" data-county="pima" data-type="agriculture" data-search="santa cruz basin pima irrigation agriculture">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-sale">For Sale</span>
+              </div>
+              <img src="assets/images/santa_cruz_listing.webp" alt="Santa Cruz Basin Pima County Arizona land" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Request info</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Santa Cruz Basin">PDF specs</button>
+              </div>
+              <img src="assets/images/broker_portrait.webp" alt="Listing agent Arthur Hague" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Pima County, AZ
-              </div>
-              <h3 class="listing-title">Santa Cruz Basin</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">240 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">General Rural</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">208-16-044A</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Irrig. Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Santa Cruz Basin</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$850,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Santa Cruz Basin">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$3,542 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>240 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>Gen. Rural</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Irrig. Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Scale investment</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 7 (Pima - Pending) -->
-          <article class="listing-card reveal" data-county="pima">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-pending">Pending</span>
-              <img src="assets/images/sonora_foothills_listing.webp" alt="Sonora Foothills Estate - Pending land in Arizona" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card is-hidden-initial" data-status="pending" data-county="pima" data-type="ranch" data-search="sonora foothills pima pending">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-pending">Pending</span>
+              </div>
+              <img src="assets/images/sonora_foothills_listing.webp" alt="Sonora Foothills Estate pending land in Arizona" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Join waitlist</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Sonora Foothills">PDF specs</button>
+              </div>
+              <img src="assets/images/sarah_miller_portrait.webp" alt="Listing agent Sarah Miller" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Pima County, AZ
-              </div>
-              <h3 class="listing-title">Sonora Foothills</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">15 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-4</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">208-11-209B</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Shared Well</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Sonora Foothills</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$295,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Sonora Foothills">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">$19,667 / acre</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>15 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-4</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Shared Well</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Under contract</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
-          <!-- Listing 8 (Cochise - Sold) -->
-          <article class="listing-card reveal" data-county="cochise">
-            <div class="listing-image-container">
-              <span class="listing-badge badge-sold">Sold History</span>
-              <img src="assets/images/adobe_flats_listing.webp" alt="Adobe Flats Ranch - Sold land in Arizona" class="listing-image" width="360" height="240" loading="lazy">
+          <article class="listing-card is-hidden-initial" data-status="sold" data-county="cochise" data-type="ranch" data-search="adobe flats ranch cochise sold">
+            <div class="listing-media">
+              <div class="listing-badges">
+                <span class="badge badge-sold">Sold</span>
+              </div>
+              <img src="assets/images/adobe_flats_listing.webp" alt="Adobe Flats Ranch sold land in Cochise County" width="500" height="540" loading="lazy">
+              <div class="listing-hover">
+                <a href="#contact-section" class="btn btn-accent btn-sm">Similar parcels</a>
+                <button type="button" class="btn btn-outline-white btn-sm pdf-download-btn" data-property="Adobe Flats Ranch">Case study</button>
+              </div>
+              <img src="assets/images/sam_daniels_portrait.webp" alt="Listing agent Sam Daniels" class="listing-agent-avatar" width="48" height="48" loading="lazy">
             </div>
-            <div class="listing-details">
-              <div class="listing-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="listing-body">
+              <p class="listing-loc">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 Cochise County, AZ
-              </div>
-              <h3 class="listing-title">Adobe Flats Ranch</h3>
-              <div class="listing-meta-row">
-                <div class="meta-item">
-                  <span class="meta-label">Acreage</span>
-                  <span class="meta-val">30 Acres</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Zoning</span>
-                  <span class="meta-val">RU-4</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">APN / Parcel</span>
-                  <span class="meta-val">305-18-005D</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Water</span>
-                  <span class="meta-val">Open Basin</span>
-                </div>
-              </div>
+              </p>
+              <h3 class="listing-title"><a href="#contact-section">Adobe Flats Ranch</a></h3>
               <div class="listing-price-row">
                 <span class="listing-price">$150,000</span>
-                <div class="listing-actions">
-                  <button class="pdf-download-btn btn-link" data-property="Adobe Flats Ranch">PDF Specs</button>
-                  <a href="#contact-section" class="listing-link">
-                    Explore
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </a>
-                </div>
+                <span class="listing-price-note">Closed</span>
+              </div>
+              <div class="listing-specs">
+                <div class="listing-spec"><span class="spec-label">Acreage</span><strong>30 ac</strong></div>
+                <div class="listing-spec"><span class="spec-label">Zoning</span><strong>RU-4</strong></div>
+                <div class="listing-spec"><span class="spec-label">Water</span><strong>Open Basin</strong></div>
+              </div>
+              <div class="listing-footer">
+                <span class="listing-tag">Proven close</span>
+                <a href="#contact-section" class="listing-more">Details →</a>
               </div>
             </div>
           </article>
 
         </div>
+
+        <div class="listings-bottom">
+          <div class="load-more-wrap">
+            <button type="button" class="btn btn-ghost" id="load-more-listings">Load more listings</button>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- NAPA Services Section: Passionate About Being Different -->
-    <section id="services-section" class="napa-services-section bg-warm">
-      <div class="bg-topo-overlay"></div>
-      <div class="container">
-        <div class="services-header text-center reveal">
-          <span class="eyebrow">Experience</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Passionate About Being Different</span></h2>
-          <p class="services-subtitle">Discover how our specialized land brokerage expertise makes a real difference in your transaction.</p>
-        </div>
-        
-        <div class="services-grid">
-          
-          <!-- Service Card 1 -->
-          <div class="service-card reveal">
-            <div class="service-icon-wrapper">
-              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-            </div>
-            <h3 class="service-title">Sell Your Land</h3>
-            <p class="service-description">Get a comprehensive market analysis, boundary verification, and topographic mapping report to present your land's true value to qualified buyers.</p>
-            <a href="#contact-section" class="service-link btn-magnetic">
-              Read More
-              <svg class="service-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-
-          <!-- Service Card 2 -->
-          <div class="service-card reveal">
-            <div class="service-icon-wrapper">
-              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-              </svg>
-            </div>
-            <h3 class="service-title">Acquire Arizona Acreage</h3>
-            <p class="service-description">Find recreational, investment, or residential parcels vetted for AMA water basin compliance, utility access, easements, and soil capability.</p>
-            <a href="#listings-section" class="service-link btn-magnetic">
-              Read More
-              <svg class="service-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-
-          <!-- Service Card 3 -->
-          <div class="service-card reveal">
-            <div class="service-icon-wrapper">
-              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-              </svg>
-            </div>
-            <h3 class="service-title">Land Investment</h3>
-            <p class="service-description">Consult with accredited land specialists to navigate mineral rights severance, grandfathered water claims, and county assessor tax compliance.</p>
-            <a href="#contact-section" class="service-link btn-magnetic">
-              Read More
-              <svg class="service-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-
-    <!-- NAPA Featured Properties Grid Section (Highlighting Legacy Listings) -->
-    <section class="napa-featured-section">
-      <div class="bg-topo-overlay"></div>
+    <!-- Services -->
+    <section id="services-section" class="services-section section-pattern section-pattern-topo">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Featured Legacy Land</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Ranch &amp; Acreage Highlights</span></h2>
-          <p>Hand-picked premium listings featuring outstanding topography, water rights, and development capabilities.</p>
+          <span class="eyebrow">How we help</span>
+          <h2>Sell, buy, and invest with land-first diligence</h2>
         </div>
-
-        <div class="featured-list-wrapper">
-          
-          <!-- Featured Listing 1 -->
-          <div class="featured-prop-card reveal">
-            <div class="featured-prop-badge">$320,000</div>
-            <div class="featured-prop-img-container">
-              <img src="assets/images/coyote_ridge_listing.webp" alt="Coyote Ridge Ranch Highlight" class="featured-prop-img" loading="lazy">
+        <div class="services-grid stagger-children">
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
-            <div class="featured-prop-text">
-              <div class="featured-prop-meta">Available · Cochise County</div>
-              <h3 class="featured-prop-title"><a href="#contact-section">Coyote Ridge Legacy Ranch</a></h3>
-              <p class="featured-prop-desc">An outstanding 40-acre parcel featuring standard RU-4 zoning, panoramic foothill views, and grandfathered water access via shared well agreements.</p>
-              <div class="featured-prop-specs">40 Acres · RU-4 Zoning · Shared Well Access</div>
-            </div>
+            <h3>Sell Your Land</h3>
+            <p>Market analysis, mapping, and buyer-ready packages.</p>
+            <a href="#contact-section" class="service-link">Get a valuation →</a>
           </div>
-
-          <!-- Featured Listing 2 -->
-          <div class="featured-prop-card reveal">
-            <div class="featured-prop-badge">$420,000</div>
-            <div class="featured-prop-img-container">
-              <img src="assets/images/verde_river_listing.webp" alt="Verde River Farm Highlight" class="featured-prop-img" loading="lazy">
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
             </div>
-            <div class="featured-prop-text">
-              <div class="featured-prop-meta">Available · Yavapai County</div>
-              <h3 class="featured-prop-title"><a href="#contact-section">Verde River Riparian Farm</a></h3>
-              <p class="featured-prop-desc">A premium 80-acre agricultural estate situated along the riparian basin of Yavapai. Includes an active irrigation well and high-grade organic desert soil.</p>
-              <div class="featured-prop-specs">80 Acres · RU-36 Zoning · Active Irrigation Well</div>
-            </div>
+            <h3>Buy Arizona Acreage</h3>
+            <p>Water, access, and zoning checked before you offer.</p>
+            <a href="#listings-section" class="service-link">Browse listings →</a>
           </div>
-
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3>Land Investment</h3>
+            <p>Mineral rights, water claims, and tax classification guidance.</p>
+            <a href="#contact-section" class="service-link">Talk to a broker →</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3>Due Diligence</h3>
+            <p>APN, survey, easements, and LandID mapping before you commit.</p>
+            <a href="#faq-section" class="service-link">Learn more →</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- NAPA Sam Daniels-style Agent Overlap Section -->
-    <section id="about-section" class="profile-section section-with-details bg-warm">
-      <div class="bg-topo-overlay"></div>
+    <!-- 6. Meet Arthur -->
+    <section id="about-section" class="profile-section section-pattern section-pattern-topo">
       <div class="container">
-        <div class="profile-container">
+        <div class="profile-grid">
           <div class="profile-image-wrap reveal">
             <img src="assets/images/broker_portrait.webp" alt="Arthur Hague - Owner and Arizona Land Broker" class="profile-img" width="400" height="500" loading="lazy">
           </div>
-          <div class="profile-content reveal">
-            <h2 class="profile-name">Meet Arthur Hague</h2>
-            
+          <div class="profile-content reveal delay-1">
+            <span class="eyebrow">Leadership</span>
+            <h2>Meet Arthur Hague, Arizona Land Broker</h2>
             <div class="profile-bio">
-              <p>With over 25 years of experience in navigating the intricacies of rural land transactions in Arizona, Arthur Hague provides unmatched expertise in water rights, agricultural zoning, and boundary surveys.</p>
-              
-              <p>Whether analyzing irrigation grandfathered water rights in agricultural basins or researching subsurface mineral rights, we protect our clients' land investments and showcase ranches to their highest potential.</p>
+              <p>Arthur Hague is Designated Broker and Owner of Hague Creek Land Brokerage (AZ DRE# BR654321000). With 25+ years in rural Arizona transactions, he focuses on water rights, agricultural zoning, APN accuracy, and boundary surveys for Tucson and statewide clients.</p>
+              <p>From grandfathered irrigation claims in agricultural basins to subsurface mineral rights on title, Hague Creek protects land investments and markets ranches with LandID maps, drone imagery, and diligence-first packages.</p>
             </div>
-            
             <div class="profile-signature">Arthur Hague</div>
+            <div class="profile-actions">
+              <a href="#contact-section" class="btn btn-accent">Schedule a consultation</a>
+              <a href="tel:+15205550190" class="btn btn-outline">Call +1 (520) 555-0190</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Real Estate Services Section (4 outline boxes layout) -->
-    <section class="services-outlines-section">
-      <div class="bg-topo-overlay"></div>
+    <!-- Testimonials -->
+    <section id="testimonials-section" class="testimonials-section testimonials-light">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Technical Competence</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Our Land Due Diligence Process</span></h2>
-          <p>We perform rigorous compliance checks to secure your rural property transaction.</p>
+          <span class="eyebrow">Client words</span>
+          <h2>Trusted by Arizona land buyers and sellers</h2>
         </div>
 
-        <div class="outlines-grid">
-          
-          <!-- Box 1 -->
-          <div class="outline-box reveal">
-            <div class="outline-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <div class="testimonial-carousel reveal">
+          <button type="button" class="testimonial-nav-btn" id="testimonial-prev" aria-label="Previous client review">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="testimonials-track-wrap">
+            <div class="testimonials-track" id="testimonials-track">
+              <div class="testimonial-slide" data-index="0">
+                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                <p class="testimonial-quote">“Arthur helped us list and sell our legacy family ranch in Yavapai County. The property sheet, drone footage, and LandID mapping drew qualified buyers fast.”</p>
+                <div class="testimonial-author">— Sarah Miller · Yavapai ranch seller</div>
+              </div>
+              <div class="testimonial-slide" data-index="1">
+                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                <p class="testimonial-quote">“Working with Hague Creek made buying agricultural land in Cochise County straightforward. Arthur’s understanding of water rights and soils is unmatched.”</p>
+                <div class="testimonial-author">— Marcus Vance · Happy buyer</div>
+              </div>
+              <div class="testimonial-slide" data-index="2">
+                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                <p class="testimonial-quote">“From APN verification to mineral rights review, the team delivered the diligence we needed on a complex multi-parcel acquisition.”</p>
+                <div class="testimonial-author">— David DeLacruz · Land investor</div>
+              </div>
+              <div class="testimonial-slide" data-index="3">
+                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                <p class="testimonial-quote">“We needed a broker who speaks land — zoning, wells, and easements — not just home sales. Hague Creek guided every step from first showing to close.”</p>
+                <div class="testimonial-author">— Elena Rocha · Homestead buyer</div>
+              </div>
             </div>
-            <h4 class="outline-title">Water Rights Audit</h4>
-            <p class="outline-desc">Verifying AMA groundwater basins, grandfathered well logs, and shared utility claims before closing.</p>
           </div>
 
-          <!-- Box 2 -->
-          <div class="outline-box reveal">
-            <div class="outline-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 2 2 22 22 22"></polygon></svg>
-            </div>
-            <h4 class="outline-title">GIS Boundary Check</h4>
-            <p class="outline-desc">Aligning county assessor parcel numbers (APN) with survey records to verify acreage limits.</p>
-          </div>
-
-          <!-- Box 3 -->
-          <div class="outline-box reveal">
-            <div class="outline-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-            </div>
-            <h4 class="outline-title">Zoning Assessor Check</h4>
-            <p class="outline-desc">Ensuring residential, grazing, agricultural, or off-grid usage fits RU-4/RU-36 zoning ordinances.</p>
-          </div>
-
-          <!-- Box 4 -->
-          <div class="outline-box reveal">
-            <div class="outline-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            </div>
-            <h4 class="outline-title">Mineral Rights Audit</h4>
-            <p class="outline-desc">Identifying subsurface rights ownership, easements, and public utility access records on title.</p>
-          </div>
-
+          <button type="button" class="testimonial-nav-btn" id="testimonial-next" aria-label="Next client review">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
+
+        <div class="testimonial-pagination" id="testimonial-dots" role="tablist" aria-label="Testimonial pages"></div>
+        <p class="testimonial-page-label" id="testimonial-page-label" aria-live="polite">1 / 4</p>
       </div>
     </section>
 
-    <!-- Featured Arizona Land Gallery Collage ("Featured Neighborhoods" style) -->
-    <section class="neighborhoods-gallery-section bg-warm">
-      <div class="bg-topo-overlay"></div>
+    <!-- Counties -->
+    <section class="neighborhoods-section" id="neighborhoods-section">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Explore Arizona Counties</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Geographic Focus Areas</span></h2>
-          <p>Click counties or maps to find available rural land properties in our primary markets.</p>
+          <span class="eyebrow">Markets</span>
+          <h2>Arizona counties we serve</h2>
         </div>
-
-        <div class="gallery-collage-grid">
-          <div class="collage-item reveal">
-            <img src="assets/images/coyote_ridge_listing.webp" alt="Cochise County Landscapes" class="collage-img" loading="lazy">
-            <div class="collage-overlay"></div>
-            <div class="collage-text">
-              <h4>Cochise County</h4>
-              <p>4 Active Listings</p>
-            </div>
-          </div>
-          <div class="collage-item reveal">
-            <img src="assets/images/verde_river_listing.webp" alt="Yavapai County Landscapes" class="collage-img" loading="lazy">
-            <div class="collage-overlay"></div>
-            <div class="collage-text">
-              <h4>Yavapai County</h4>
-              <p>2 Active Listings</p>
-            </div>
-          </div>
-          <div class="collage-item reveal">
-            <img src="assets/images/san_pedro_listing.webp" alt="Pima County Landscapes" class="collage-img" loading="lazy">
-            <div class="collage-overlay"></div>
-            <div class="collage-text">
-              <h4>Pima County</h4>
-              <p>2 Active Listings</p>
-            </div>
-          </div>
-          <div class="collage-item reveal">
-            <img src="assets/images/geo_tucson_foothills.webp" alt="Tucson Foothills Land" class="collage-img" loading="lazy">
-            <div class="collage-overlay"></div>
-            <div class="collage-text">
-              <h4>Tucson Foothills</h4>
-              <p>Explore Area</p>
-            </div>
-          </div>
+        <div class="neighborhoods-grid stagger-children">
+          <a href="#listings-section" class="neighborhood-card" data-jump-filter="cochise">
+            <img src="assets/images/coyote_ridge_listing.webp" alt="Cochise County land" loading="lazy">
+            <div class="neighborhood-overlay"></div>
+            <div class="neighborhood-text"><h3>Cochise County</h3><p>4 Listings</p></div>
+          </a>
+          <a href="#listings-section" class="neighborhood-card" data-jump-filter="yavapai">
+            <img src="assets/images/verde_river_listing.webp" alt="Yavapai County land" loading="lazy">
+            <div class="neighborhood-overlay"></div>
+            <div class="neighborhood-text"><h3>Yavapai County</h3><p>2 Listings</p></div>
+          </a>
+          <a href="#listings-section" class="neighborhood-card" data-jump-filter="pima">
+            <img src="assets/images/san_pedro_listing.webp" alt="Pima County land" loading="lazy">
+            <div class="neighborhood-overlay"></div>
+            <div class="neighborhood-text"><h3>Pima County</h3><p>2 Listings</p></div>
+          </a>
+          <a href="#listings-section" class="neighborhood-card" data-jump-filter="all">
+            <img src="assets/images/geo_tucson_foothills.webp" alt="Tucson Foothills land" loading="lazy">
+            <div class="neighborhood-overlay"></div>
+            <div class="neighborhood-text"><h3>Tucson Foothills</h3><p>Explore</p></div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Meet Our Land Broker Team -->
-    <section class="team-grid-section">
-      <div class="bg-topo-overlay"></div>
+    <!-- Blog teasers -->
+    <section id="blog-section" class="blog-section section-pattern section-pattern-topo">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Accredited Representatives</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Meet Our Land Brokers</span></h2>
-          <p>Our designated brokers and specialists offer unparalleled expert advice in Arizona rural sales.</p>
+          <span class="eyebrow">Resources</span>
+          <h2>Land education</h2>
         </div>
-
-        <div class="team-grid">
-          
-          <!-- Team Member 1 -->
-          <div class="team-card reveal">
-            <div class="team-img-wrapper">
-              <img src="assets/images/broker_portrait.webp" alt="Arthur Hague Designated Broker" class="team-img" loading="lazy">
+        <div class="blog-grid blog-grid-4 stagger-children">
+          <article class="blog-card">
+            <div class="blog-img-wrap">
+              <img src="assets/images/blog_water_rights.webp" alt="Understanding Arizona Water Rights" loading="lazy">
             </div>
-            <div class="team-info">
-              <h4 class="team-name">Arthur Hague</h4>
-              <p class="team-role">Designated Broker &amp; Founder</p>
-              <p class="team-contact"><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
-            </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div class="team-card reveal">
-            <div class="team-img-wrapper">
-              <img src="assets/images/sam_daniels_portrait.webp" alt="Sam Daniels Associate Broker" class="team-img" loading="lazy">
-            </div>
-            <div class="team-info">
-              <h4 class="team-name">Sam Daniels</h4>
-              <p class="team-role">Associate Broker - Land Specialist</p>
-              <p class="team-contact"><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
-            </div>
-          </div>
-
-          <!-- Team Member 3 -->
-          <div class="team-card reveal">
-            <div class="team-img-wrapper">
-              <img src="assets/images/sarah_miller_portrait.webp" alt="Sarah Miller Land Specialist" class="team-img" loading="lazy">
-            </div>
-            <div class="team-info">
-              <h4 class="team-name">Sarah Miller</h4>
-              <p class="team-role">Client Coordinator &amp; Specialist</p>
-              <p class="team-contact"><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- NAPA Testimonial Panel Overlay -->
-    <section class="napa-testimonials-panel">
-      <div class="bg-topo-overlay"></div>
-      <div class="container">
-        <div class="testimonials-dark-box reveal">
-          <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-quote">"Arthur helped us list and sell our legacy family ranch in Yavapai County. The property sheet, high-end drone footage, and LandID interactive mapping drew qualified buyers fast. Great experience!"</p>
-          <div class="testimonial-author">Sarah Miller · Yavapai Ranch Seller</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Popular Land Categories Grid -->
-    <section class="popular-categories-section">
-      <div class="bg-topo-overlay"></div>
-      <div class="container">
-        <div class="section-header text-center reveal">
-          <span class="eyebrow">Search By Category</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Popular Land Classifications</span></h2>
-          <p>Select a category to filter listings matching your acquisition requirements.</p>
-        </div>
-
-        <div class="categories-grid">
-          
-          <div class="category-card reveal">
-            <div class="category-img-container">
-              <img src="assets/images/category_ranch_land.webp" alt="Ranch Land Class" class="category-img" loading="lazy">
-            </div>
-            <div class="category-title-overlay">Ranch Land</div>
-          </div>
-
-          <div class="category-card reveal">
-            <div class="category-img-container">
-              <img src="assets/images/category_recreational.webp" alt="Recreational Acreage Class" class="category-img" loading="lazy">
-            </div>
-            <div class="category-title-overlay">Recreational Acreage</div>
-          </div>
-
-          <div class="category-card reveal">
-            <div class="category-img-container">
-              <img src="assets/images/category_agriculture.webp" alt="Agricultural Farms Class" class="category-img" loading="lazy">
-            </div>
-            <div class="category-title-overlay">Agricultural Farms</div>
-          </div>
-
-          <div class="category-card reveal">
-            <div class="category-img-container">
-              <img src="assets/images/category_riverfront.webp" alt="Riverfront Parcels Class" class="category-img" loading="lazy">
-            </div>
-            <div class="category-title-overlay">Riverfront Parcels</div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Land Blog / Resources Grid Section -->
-    <section class="blog-grid-section bg-warm" style="position:relative;">
-      <div class="bg-topo-overlay"></div>
-      <div class="container">
-        <div class="section-header text-center reveal">
-          <span class="eyebrow">Land Resources &amp; News</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Our Land Education Library</span></h2>
-          <p>Read expert insights on due diligence, water basin updates, and zoning audits in Arizona.</p>
-        </div>
-
-        <div class="blog-grid">
-          
-          <!-- Post 1 -->
-          <article class="blog-card reveal">
-            <div class="blog-img-container">
-              <img src="assets/images/blog_water_rights.webp" alt="Understanding Arizona Water Rights" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-content">
-              <span class="blog-meta">June 14, 2026 · Due Diligence</span>
-              <h4 class="blog-title"><a href="#faq-section">Understanding Arizona Water Rights &amp; AMA Basins</a></h4>
-              <p class="blog-excerpt">Navigating grandfathered claims, open basins, and well registration criteria under ADWR regulations.</p>
+            <div class="blog-body">
+              <span class="blog-meta">Due Diligence</span>
+              <h3 class="blog-title"><a href="#faq-section">Arizona Water Rights &amp; AMA Basins</a></h3>
             </div>
           </article>
-
-          <!-- Post 2 -->
-          <article class="blog-card reveal">
-            <div class="blog-img-container">
-              <img src="assets/images/blog_land_access.webp" alt="How to Verify Land Access" class="blog-img" loading="lazy">
+          <article class="blog-card">
+            <div class="blog-img-wrap">
+              <img src="assets/images/blog_land_access.webp" alt="How to Verify Land Access" loading="lazy">
             </div>
-            <div class="blog-content">
-              <span class="blog-meta">May 28, 2026 · Buyer Advice</span>
-              <h4 class="blog-title"><a href="#faq-section">How to Verify Deeded Land Access &amp; Easements</a></h4>
-              <p class="blog-excerpt">Avoid landlocked purchases by reviewing recorded titles and private road easements check lists.</p>
+            <div class="blog-body">
+              <span class="blog-meta">Buyer Advice</span>
+              <h3 class="blog-title"><a href="#faq-section">Deeded Access &amp; Easements</a></h3>
             </div>
           </article>
-
-          <!-- Post 3 -->
-          <article class="blog-card reveal">
-            <div class="blog-img-container">
-              <img src="assets/images/blog_zoning_codes.webp" alt="Zoning Codes RU-4 vs RU-36" class="blog-img" loading="lazy">
+          <article class="blog-card">
+            <div class="blog-img-wrap">
+              <img src="assets/images/blog_zoning_codes.webp" alt="Zoning Codes RU-4 vs RU-36" loading="lazy">
             </div>
-            <div class="blog-content">
-              <span class="blog-meta">April 12, 2026 · Zoning Compliance</span>
-              <h4 class="blog-title"><a href="#faq-section">Zoning Codes Demystified: RU-4 vs RU-36</a></h4>
-              <p class="blog-excerpt">How county parcel regulations dictate minimum lot sizes and building rights in rural Arizona.</p>
+            <div class="blog-body">
+              <span class="blog-meta">Zoning</span>
+              <h3 class="blog-title"><a href="#faq-section">RU-4 vs RU-36 Zoning Codes</a></h3>
             </div>
           </article>
-
-          <!-- Post 4 -->
-          <article class="blog-card reveal">
-            <div class="blog-img-container">
-              <img src="assets/images/blog_financing.webp" alt="Financing Raw Land in Arizona" class="blog-img" loading="lazy">
+          <article class="blog-card">
+            <div class="blog-img-wrap">
+              <img src="assets/images/blog_financing.webp" alt="Financing Raw Land in Arizona" loading="lazy">
             </div>
-            <div class="blog-content">
-              <span class="blog-meta">March 05, 2026 · Financial Advice</span>
-              <h4 class="blog-title"><a href="#faq-section">Financing Vacant &amp; Raw Arizona Acreage</a></h4>
-              <p class="blog-excerpt">Securing vacant land credit lines through local agricultural credit banks and private lenders.</p>
+            <div class="blog-body">
+              <span class="blog-meta">Finance</span>
+              <h3 class="blog-title"><a href="#faq-section">Financing Raw Arizona Acreage</a></h3>
             </div>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- Explorations Parallax Gallery Section -->
-    <section id="explorations-section" class="explorations-section">
-      <div class="bg-topo-overlay"></div>
-      <div class="explorations-container" id="explorations-pin-container">
-        
-        <!-- Pinned Left Content -->
-        <div class="explorations-left" id="explorations-left-panel">
-          <span class="eyebrow">Visual Playground</span>
-          <h2 class="explorations-title">Arizona <br><em>Landscapes</em></h2>
-          <p class="explorations-desc">A curated visual look at the diverse topography, high-desert grasslands, and riparian canyon lands defining our active listings.</p>
-          <a href="#listings-section" class="btn btn-outline-white btn-pill btn-magnetic">Explore Listings &rarr;</a>
-        </div>
-        
-        <!-- Parallax Right Columns -->
-        <div class="explorations-right">
-          <div class="parallax-column col-left">
-            <div class="parallax-card">
-              <img src="assets/images/parallax_saguaro.webp" alt="Saguaro Foothills" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">Saguaro Foothills</div>
-            </div>
-            <div class="parallax-card">
-              <img src="assets/images/parallax_grasslands.webp" alt="Desert Grasslands" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">High Desert Grasslands</div>
-            </div>
-            <div class="parallax-card">
-              <img src="assets/images/parallax_canyon.webp" alt="Riparian Canyon" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">Riparian Canyons</div>
-            </div>
-          </div>
-          <div class="parallax-column col-right">
-            <div class="parallax-card">
-              <img src="assets/images/parallax_oak_flatlands.webp" alt="Oak Flatlands" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">Oak Flatlands</div>
-            </div>
-            <div class="parallax-card">
-              <img src="assets/images/parallax_mesa.webp" alt="Mesa Overlooks" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">Mesa Overlooks</div>
-            </div>
-            <div class="parallax-card">
-              <img src="assets/images/parallax_legacy_ranch.webp" alt="Legacy Ranches" class="parallax-img" loading="lazy">
-              <div class="parallax-card-label">Legacy Ranches</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FAQ Section (AEO and Schema.org Compliant Accordions) -->
+    <!-- 14. FAQ -->
     <section id="faq-section" class="faq-section">
-      <div class="bg-topo-overlay"></div>
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Land Resources</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Frequently Asked Questions</span></h2>
-          <p>Get immediate, direct answers to common questions about rural land acquisition, water basins, and assessor parcel searches in Arizona.</p>
+          <span class="eyebrow">Resources</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Direct answers on water basins, APNs, zoning, financing, and due diligence for Arizona land.</p>
         </div>
-        
         <div class="faq-wrapper reveal">
-          
-          <!-- FAQ Item 1 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               What should I check regarding water rights when buying Arizona land?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                In Arizona, you must identify whether the land lies within an Active Management Area (AMA) where groundwater is strictly regulated, or in an Open Basin. You should always verify the existence of grandfathered water rights, surface water claims, or shared well agreements prior to completing a purchase.
-              </div>
+              <div class="accordion-content-inner">In Arizona, you must identify whether the land lies within an Active Management Area (AMA) where groundwater is strictly regulated, or in an Open Basin. Always verify grandfathered water rights, surface water claims, or shared well agreements prior to purchase.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 2 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               How does the LandID interactive mapping work for listings?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                Every available listing at Hague Creek includes a detailed LandID map integration. This allows buyers to interactively view property boundaries, soil topography, elevation profiles, parcel boundaries, and local utility access overlays directly on their screens.
-              </div>
+              <div class="accordion-content-inner">Every available listing at Hague Creek includes LandID map integration so buyers can view property boundaries, soil topography, elevation profiles, parcel lines, and utility access overlays interactively.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 3 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               What is an APN and why is it crucial for land transactions?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                An APN is the Assessor's Parcel Number, a unique identifier assigned to a specific parcel of land by the county assessor. It allows us to pull official tax records, verify legal descriptions, confirm zoning codes, and ensure the precise acreage matches the physical stakes.
-              </div>
+              <div class="accordion-content-inner">An APN is the Assessor’s Parcel Number — a unique county identifier for a parcel. It unlocks tax records, legal descriptions, zoning confirmation, and acreage verification against physical stakes.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 4 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               Can I obtain financing for purchasing raw land in Arizona?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                Yes, raw land financing is available, though it typically requires higher down payments (often 20% to 50%) than residential home loans. We work closely with local agricultural credit associations and land lenders to secure favorable terms for qualified buyers.
-              </div>
+              <div class="accordion-content-inner">Yes. Raw land financing typically requires higher down payments (often 20% to 50%) than residential loans. We work with agricultural credit associations and land lenders for qualified buyers.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 5 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               What are the common zoning codes for rural land in Arizona?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                Rural zoning in Arizona, such as RU-4 or RU-36, specifies the minimum acreage required for a single-family dwelling (e.g., 4 acres or 36 acres). Before purchasing, you should verify if the county zoning allows your intended use, such as livestock grazing, residential building, or off-grid homesteads.
-              </div>
+              <div class="accordion-content-inner">Codes such as RU-4 or RU-36 specify minimum acreage for a single-family dwelling (e.g. 4 or 36 acres). Verify that county zoning allows your intended use — grazing, residential building, or off-grid homestead.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 6 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               How can I verify access and easements to a land parcel?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                You should check if the property has deeded legal access or is landlocked. Deeded access is recorded on the property title. If the parcel is accessed via private roads, you must confirm if there are recorded easement agreements allowing access, and check the physical road condition for vehicle suitability.
-              </div>
+              <div class="accordion-content-inner">Confirm deeded legal access on title. If access is via private roads, verify recorded easement agreements and inspect physical road condition for vehicle suitability so you are not landlocked.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 7 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               What is the difference between mineral rights and surface rights in Arizona?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                In Arizona, mineral rights are often severed from surface rights. Owning surface rights does not automatically grant you ownership of the subsurface minerals. A thorough title search is required to verify if the mineral rights are owned by a third party, the state, or the federal government.
-              </div>
+              <div class="accordion-content-inner">Mineral rights are often severed from surface rights. Owning the surface does not automatically include subsurface minerals. A title search verifies if minerals are held by a third party, the state, or the federal government.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 8 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               What does it mean if a property is inside an Active Management Area (AMA)?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                Inside an AMA, groundwater withdrawal is strictly regulated by the Arizona Department of Water Resources (ADWR). If you plan to drill a well or subdivide land within an AMA, you must demonstrate a 100-year assured water supply, whereas areas outside AMAs (open basins) have fewer regulatory restrictions.
-              </div>
+              <div class="accordion-content-inner">Inside an AMA, groundwater withdrawal is regulated by ADWR. Drilling a well or subdividing typically requires demonstrating a 100-year assured water supply. Open basins outside AMAs have fewer restrictions.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 9 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               How do property taxes work for raw agricultural land in Arizona?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                Raw land in Arizona is assessed based on its classification. Lands classified as agricultural (for farming or active grazing) receive significant tax reductions compared to vacant or residential-classified parcels. You must file an Agricultural Status Application with the county assessor to qualify.
-              </div>
+              <div class="accordion-content-inner">Raw land is assessed by classification. Agricultural status for farming or active grazing can reduce taxes significantly versus vacant residential classification. File an Agricultural Status Application with the county assessor.</div>
             </div>
           </div>
-
-          <!-- FAQ Item 10 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
               Why is a survey recommended before closing a land transaction?
               <svg class="accordion-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="accordion-content">
-              <div class="accordion-content-inner">
-                A professional boundary survey verifies the exact corners, acreage, and identifies any physical encroachments (such as fences or structures built across lines) or unrecorded easements. Relying solely on county GIS maps can result in boundary disputes, as GIS maps are not legal surveys.
-              </div>
+              <div class="accordion-content-inner">A professional boundary survey verifies corners, acreage, and encroachments. County GIS maps are not legal surveys and can lead to boundary disputes if relied on alone.</div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- Lead Capture Section (Conversion Trigger & NAPA Inquiry Banner) -->
-    <section id="contact-section" class="contact-section section-with-details">
-      <div class="bg-topo-overlay"></div>
-      <div class="container contact-layout">
-        
-        <div class="contact-info-block reveal">
+    <!-- 15. Contact -->
+    <section id="contact-section" class="contact-section section-pattern section-pattern-topo">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
           <span class="eyebrow">Contact Broker</span>
-          <h2 class="reveal-mask"><span class="reveal-slide-up">Begin Your Arizona Land Acquisition</span></h2>
-          <p>Contact Hague Creek Land Brokerage to speak with an experienced Arizona land broker. We assist with custom property searches, listing valuations, water availability analysis, and due diligence checks.</p>
-          
-          <div class="contact-details-grid">
-            
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div class="contact-detail-text">
-                <p class="contact-detail-title">Direct Phone</p>
-                <p><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
-              </div>
+          <h2>Begin Your Arizona Land Acquisition</h2>
+          <p class="lead">Contact Hague Creek Land Brokerage to speak with an experienced Arizona land broker about custom searches, valuations, water analysis, and due diligence.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             </div>
-            
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </div>
-              <div class="contact-detail-text">
-                <p class="contact-detail-title">Tucson Office</p>
-                <p>100 E Congress St, Suite 300, Tucson, AZ 85701</p>
-              </div>
+            <div>
+              <p class="contact-detail-title">Direct Phone</p>
+              <p><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <p class="contact-detail-title">Tucson Office</p>
+              <p>100 E Congress St, Suite 300<br>Tucson, AZ 85701</p>
             </div>
           </div>
         </div>
-        
-        <!-- Interactive Gravity-Forms-style inquiry capture -->
-        <div class="lead-form-wrapper reveal">
-          <form class="lead-form">
+
+        <div class="lead-form-wrapper reveal delay-1">
+          <form class="lead-form" id="lead-form">
             <h3 class="form-header-title">Request Land Consultation</h3>
-            <p class="form-header-subtitle">Complete this brief questionnaire to route your query directly to our broker.</p>
-            
+            <p class="form-header-subtitle">Complete this form to route your inquiry to our broker team.</p>
             <div class="lead-form-grid">
               <div class="form-control">
                 <label for="form-name">Full Name</label>
@@ -1435,7 +1163,6 @@
                 <input type="email" id="form-email" name="email" class="form-input-text" required placeholder="john@example.com">
               </div>
             </div>
-            
             <div class="lead-form-grid">
               <div class="form-control">
                 <label for="form-phone">Phone Number</label>
@@ -1451,7 +1178,6 @@
                 </select>
               </div>
             </div>
-
             <div class="lead-form-grid">
               <div class="form-control">
                 <label for="form-acreage">Preferred Acreage</label>
@@ -1472,128 +1198,98 @@
                 </select>
               </div>
             </div>
-            
             <div class="form-control">
               <label for="form-message">Describe Your Vision / Requirements</label>
-              <textarea id="form-message" name="message" class="form-textarea" required placeholder="Detail zoning needs, water accessibility, topography requirements, or existing parcel APN."></textarea>
+              <textarea id="form-message" name="message" class="form-textarea" required placeholder="Zoning needs, water access, topography, or parcel APN…"></textarea>
             </div>
-            
-            <button type="submit" class="btn btn-primary form-submit-btn btn-magnetic">
-              Submit Request
-              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+            <button type="submit" class="btn btn-primary form-submit-btn">Submit Request</button>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- Closing Paragraph for SEO Keyword Wrap-up -->
-    <section class="bg-warm section-closing-bg">
-      <div class="bg-topo-overlay"></div>
-      <div class="container text-center closing-container">
-        <p class="closing-text">
-          Purchasing a legacy ranch, expanding agricultural holdings, or selling a rural parcel requires a dedicated Arizona land broker to ensure a seamless transaction. Contact Hague Creek today to find your ideal land for sale in Arizona.
-        </p>
+</main>
+
+  <!-- Sticky first-impression conversion bar -->
+  <div class="float-bar" id="float-bar" hidden>
+    <div class="float-bar-inner">
+      <div class="float-bar-copy">
+        <strong>Ready to acquire Arizona land?</strong>
+        <span>Talk with a designated land broker today.</span>
       </div>
-    </section>
-
-    <!-- Take Off Premium CTA Section -->
-    <section class="takeoff-cta-section bg-dark">
-      <div class="bg-topo-overlay"></div>
-      <div class="container takeoff-layout">
-        
-        <!-- Left Column: Copy & Actions -->
-        <div class="takeoff-info reveal">
-          <h2 class="takeoff-title">
-            Your Arizona land legacy is about to take off
-            <span class="takeoff-script">Hague Creek</span>
-          </h2>
-          <p class="takeoff-desc">
-            Partner with Arizona's leading land experts. Whether acquiring a cattle ranch, investing in agricultural acreage, or securing a homestead parcel, we guide you through every step of your land-buying journey.
-          </p>
-          <div class="takeoff-actions">
-            <a href="#contact-section" class="btn btn-outline-white btn-pill btn-magnetic">Contact Us</a>
-            <span class="takeoff-or">OR</span>
-            <a href="#listings-section" class="btn btn-outline-white btn-pill btn-magnetic">Search Listings</a>
-          </div>
-        </div>
-
-        <!-- Right Column: Asymmetrical 3-Image Collage -->
-        <div class="takeoff-collage reveal">
-          <div class="collage-col-left">
-            <div class="collage-tall-card">
-              <img src="assets/images/takeoff_tall_card.webp" alt="Arizona Ranch Landscape" class="collage-tall-img" loading="lazy">
-            </div>
-          </div>
-          <div class="collage-col-right">
-            <div class="collage-small-card">
-              <img src="assets/images/coyote_ridge_listing.webp" alt="Legacy Estate House" class="collage-small-img" loading="lazy">
-            </div>
-            <div class="collage-small-card">
-              <img src="assets/images/verde_river_listing.webp" alt="Rural Ranch Estate" class="collage-small-img" loading="lazy">
-            </div>
-          </div>
-        </div>
-
+      <div class="float-bar-actions">
+        <a href="tel:+15205550190" class="btn btn-outline float-call">Call +1 (520) 555-0190</a>
+        <a href="#contact-section" class="btn btn-accent">Request consultation</a>
       </div>
-    </section>
-
-    <!-- Infinite Marquee Section -->
-    <div class="marquee-strip-wrap">
-      <div class="bg-topo-overlay"></div>
-      <div class="marquee-strip">
-        <span class="marquee-item">ACQUIRING THE WEST &bull; DEDICATED LAND REPRESENTATION &bull; HAGUE CREEK LAND LEGACY &bull; </span>
-        <span class="marquee-item">ACQUIRING THE WEST &bull; DEDICATED LAND REPRESENTATION &bull; HAGUE CREEK LAND LEGACY &bull; </span>
-      </div>
+      <button type="button" class="float-bar-close" id="float-bar-close" aria-label="Dismiss">×</button>
     </div>
+  </div>
 
-  </main>
-
-  <!-- NAPA White-Themed Footer Section -->
   <footer class="footer">
     <div class="container footer-top">
       <div class="footer-col">
-        <div class="footer-logo">HAGUE<span>CREEK</span></div>
-        <p class="footer-desc">Specialized Arizona land brokerage helping clients acquire, hold, and sell agricultural acreage, vacant parcels, and rural ranches.</p>
+        <div class="footer-logo">
+          <img src="assets/images/logo.png" alt="Hague Creek Arizona land broker logo" class="footer-logo-img" width="160" height="48">
+        </div>
+        <p class="footer-tagline">Rural Community Specialists</p>
+        <p class="footer-desc">Hague Creek Land Brokerage helps clients buy, sell, and hold agricultural acreage, vacant parcels, and rural ranches as a dedicated Arizona land broker.</p>
         <div class="footer-socials">
-          <a href="https://facebook.com/haguecreek" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-          <a href="https://x.com/haguecreek" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-          <a href="https://instagram.com/haguecreek" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"></path></svg></a>
+          <a href="https://facebook.com/haguecreek" aria-label="Facebook" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="https://instagram.com/haguecreek" aria-label="Instagram" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg></a>
+          <a href="https://linkedin.com/company/haguecreek" aria-label="LinkedIn" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="https://x.com/haguecreek" aria-label="X" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
         </div>
       </div>
-      
       <div class="footer-col">
-        <h4 class="footer-title">Quick Navigation</h4>
+        <h4 class="footer-title">Sitemap</h4>
         <ul class="footer-links">
-          <li><a href="#hero-section">Home Portal</a></li>
-          <li><a href="#listings-section">Land Listings</a></li>
-          <li><a href="#services-section">Brokerage Services</a></li>
-          <li><a href="#about-section">Arthur Bio</a></li>
-          <li><a href="#faq-section">Due Diligence FAQ</a></li>
+          <li><a href="#hero-section">Home</a></li>
+          <li><a href="#about-section">About</a></li>
+          <li><a href="#listings-section">Properties</a></li>
+          <li><a href="#testimonials-section">Testimonials</a></li>
+          <li><a href="#blog-section">Blog</a></li>
+          <li><a href="#contact-section">Contact</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
-        <h4 class="footer-title">Office NAP Details</h4>
-        <p class="footer-contact"><strong>Tucson Headquarters:</strong><br>100 E Congress St, Suite 300, Tucson, AZ 85701</p>
-        <p class="footer-contact"><strong>Direct Call:</strong><br><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
-        <p class="footer-contact"><strong>DRE Register:</strong><br>License #BR654321000</p>
+        <h4 class="footer-title">Properties &amp; Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#listings-section" data-jump-filter="available">Available Properties</a></li>
+          <li><a href="#listings-section" data-jump-filter="sold">Sold Properties</a></li>
+          <li><a href="#blog-section">Buying Land</a></li>
+          <li><a href="#faq-section">Financing</a></li>
+          <li><a href="#faq-section">Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Office NAP</h4>
+        <p class="footer-contact">
+          <strong>Hague Creek Land Brokerage</strong><br>
+          100 E Congress St, Suite 300<br>
+          Tucson, AZ 85701
+        </p>
+        <p class="footer-contact"><strong>Phone</strong><br><a href="tel:+15205550190">+1 (520) 555-0190</a></p>
+        <p class="footer-contact"><strong>License</strong><br>AZ DRE# BR654321000</p>
+        <p class="footer-contact"><strong>Hours</strong><br>Mon–Fri 8:00 AM – 5:00 PM MST</p>
       </div>
     </div>
-    
+    <div class="container footer-areas">
+      <p><strong>Service areas:</strong> Tucson · Pima County · Cochise County · Yavapai County · Santa Cruz County · Maricopa County · Phoenix metro</p>
+      <p><strong>Core services:</strong> <a href="#services-section">Sell Your Land</a> · <a href="#services-section">Buy Arizona Acreage</a> · <a href="#services-section">Land Investment</a> · Ranch brokerage · Water-rights diligence · LandID mapping</p>
+    </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-layout">
-        <p>&copy; 2026 Hague Creek Land Brokerage. All rights reserved.</p>
+        <p>&copy; 2026 Hague Creek Land Brokerage. All rights reserved. Built for local land clients.</p>
         <p><a href="#faq-section">Privacy Policy</a> · <a href="#faq-section">Terms of Representation</a></p>
       </div>
     </div>
   </footer>
 
-  <!-- GSAP Core and ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Mobile sticky call (SEO conversion + usability) -->
+  <a href="tel:+15205550190" class="mobile-sticky-call" aria-label="Call Hague Creek now">
+    Call +1 (520) 555-0190
+  </a>
 
-  <!-- JavaScript Bundle -->
-  <script src="assets/js/main.js?v=1.0.5"></script>
+  <script src="assets/js/main.js?v=3.5.3"></script>
 </body>
 </html>

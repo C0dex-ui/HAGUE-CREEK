@@ -1,6 +1,6 @@
 # Hague Creek Land Brokerage
 
-Hague Creek is a specialized Arizona-based rural land and ranch brokerage helping clients buy, sell, and invest in premium ranches, agricultural parcels, and rural acreage across Arizona.
+Hague Creek is a specialized Arizona land broker helping clients buy, sell, and invest in premium ranches, agricultural parcels, and rural acreage across Arizona. Tagline: Rural Community Specialists. Based in Tucson.
 
 ## Contact Information
 - **Name:** Hague Creek Land Brokerage
@@ -9,10 +9,14 @@ Hague Creek is a specialized Arizona-based rural land and ranch brokerage helpin
 - **Phone:** +1-520-555-0190
 - **Operating Hours:** Mon-Fri 08:00 AM - 05:00 PM MST
 
+## Primary Keyword
+- Arizona land broker
+
 ## Core Services & Focus Areas
-- **Ranch & Legacy Lands:** Rural ranches, livestock grazing tracts, and recreational acreage.
-- **Agricultural Investments:** Crop farming acreage, irrigation basins, and water rights valuation.
-- **Due Diligence Support:** APN verification, boundary analysis, topography maps, zoning regulations, and LandID map configuration.
+- Ranch & legacy lands: rural ranches, livestock grazing tracts, recreational acreage
+- Agricultural investments: crop acreage, irrigation basins, water-rights valuation
+- Due diligence: APN verification, boundary analysis, zoning, LandID map configuration
+- Sell land, buy Arizona acreage, land investment consulting
 
 ## Service Regions
 - Cochise County, AZ
@@ -23,14 +27,19 @@ Hague Creek is a specialized Arizona-based rural land and ranch brokerage helpin
 - Tucson metro, AZ
 - Phoenix metro, AZ
 
-## Main Navigation / Sitemap Pages
-- **Home Page** - https://dev.haguecreek.com/
-  - Main landing index targeting Arizona land broker services. Features an interactive land filter widget, landowner testimonials, featured active/sold portfolios, and direct lead consultation triggers.
+## Main Navigation / Sitemap
+- **Home** - https://dev.haguecreek.com/
 - **About** - https://dev.haguecreek.com/#about-section
-  - Broker profile for Arthur Hague, credentials, license details, and specialized land valuation experience.
 - **Properties** - https://dev.haguecreek.com/#listings-section
-  - Searchable portfolio of active listings (e.g. Coyote Ridge Ranch) and sold inventory (e.g. San Pedro Ag Valley) detailing APNs, zoning, and water specs.
-- **Resources & FAQs** - https://dev.haguecreek.com/#faq-section
-  - Local land resources answering common questions on Arizona groundwater basins, AMAs, raw land financing, and interactive mapping.
+  - Available Properties - https://dev.haguecreek.com/#listings-section
+  - Sold Properties - https://dev.haguecreek.com/#listings-section
+- **Resources**
+  - Buying Land - https://dev.haguecreek.com/#blog-section
+  - Financing - https://dev.haguecreek.com/#faq-section
+  - Frequently Asked Questions - https://dev.haguecreek.com/#faq-section
+- **Testimonials** - https://dev.haguecreek.com/#testimonials-section
+- **Blog** - https://dev.haguecreek.com/#blog-section
 - **Contact** - https://dev.haguecreek.com/#contact-section
-  - Consultation questionnaire and phone details for routing inquiries directly.
+
+## Listing Attributes (land-specific)
+Status, price, acreage, county, property type, zoning, water rights/access, agent, PDF brochure request with lead capture.
