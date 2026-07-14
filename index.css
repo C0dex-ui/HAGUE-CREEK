@@ -1372,10 +1372,10 @@ section {
 
 /* 14. Responsive Grid & Columns Footer (NAPA Light Theme) */
 .footer {
-  background-color: var(--clr-primary-dark);
-  color: rgba(255, 255, 255, 0.7);
+  background-color: var(--clr-bg-white);
+  color: var(--clr-charcoal);
   padding: 0;
-  border-top: none;
+  border-top: 2px solid var(--clr-border);
 }
 
 .footer-top {
@@ -1383,7 +1383,7 @@ section {
   gap: var(--space-xl);
   grid-template-columns: 1fr;
   padding: var(--space-xl) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--clr-border);
   max-width: 1280px;
   margin: 0 auto;
   padding-left: var(--space-md);
@@ -1408,7 +1408,7 @@ section {
 .footer-logo {
   font-family: var(--font-serif);
   font-size: 2rem;
-  color: var(--clr-bg-white);
+  color: var(--clr-primary-dark);
   margin-bottom: var(--space-md);
   letter-spacing: 0.04em;
 }
@@ -1420,13 +1420,13 @@ section {
 .footer-desc {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--clr-text-light);
   max-width: 340px;
   margin-bottom: var(--space-md);
 }
 
 .footer-col p {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--clr-text-light);
   font-size: 0.9rem;
   line-height: 1.6;
 }
@@ -1449,14 +1449,14 @@ section {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--clr-text-light);
   font-size: 0.95rem;
   font-weight: 400;
   transition: var(--transition-fast);
 }
 
 .footer-links a:hover {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
   padding-left: 6px;
 }
 
@@ -1465,7 +1465,7 @@ section {
 }
 
 .footer-contact strong {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--clr-primary-dark);
   font-weight: 600;
 }
 
@@ -1489,19 +1489,19 @@ section {
 .footer-socials a {
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: var(--clr-bg-warm);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-border);
   transition: var(--transition-fast);
 }
 
 .footer-socials a:hover {
   background-color: var(--clr-accent);
-  color: var(--clr-primary-dark);
+  color: var(--clr-bg-white);
   border-color: var(--clr-accent);
   transform: translateY(-3px);
 }
@@ -1509,7 +1509,7 @@ section {
 .footer-bottom {
   padding: var(--space-md) 0;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--clr-text-light);
 }
 
 .footer-bottom-layout {
@@ -1528,7 +1528,7 @@ section {
 }
 
 .footer-bottom-layout a {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--clr-text-light);
 }
 
 .footer-bottom-layout a:hover {
@@ -2132,7 +2132,7 @@ body.body-locked {
   opacity: 0.03; /* Faint line for high-end architectural feel */
 }
 
-/* Faint Topographic Map Line Overlay for sections — now only used as fallback */
+/* Faint Topographic Map Line Overlay — base fallback */
 .bg-topo-overlay {
   position: absolute;
   top: 0;
@@ -2140,67 +2140,96 @@ body.body-locked {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.06;
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 200 200'%3E%3Cpath d='M10,80 C40,90 60,60 100,80 C140,100 160,50 190,80 M0,120 C30,130 50,100 90,120 C130,140 150,90 180,120 M20,40 C50,50 70,20 110,40 C150,60 170,10 200,40 M0,160 C30,170 50,140 90,160 C130,180 150,130 180,160' fill='none' stroke='%231b3942' stroke-width='1' stroke-dasharray='4 4'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
 
-/* Unique section background images — each section gets its own photo overlay */
-.dedication-section {
-  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/parallax_grasslands.webp');
-  background-size: cover;
-  background-position: center;
+/* Unique SVG patterns per section — each gets its own visual texture */
+
+/* Pattern: Dot grid (dedication) */
+.dedication-section .bg-topo-overlay {
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='2' cy='2' r='1' fill='%231b3942'/%3E%3C/svg%3E");
 }
-.listings-grid-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/parallax_mesa.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Crosshatch (listings) */
+.listings-grid-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0,0 L40,40 M40,0 L0,40' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.napa-featured-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/parallax_canyon.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Horizontal waves (services) */
+.napa-services-section .bg-topo-overlay {
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cpath d='M0,20 C30,10 60,30 120,20' stroke='%23ffffff' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.profile-section {
-  background-image: linear-gradient(to bottom, rgba(245,242,235,0.96), rgba(245,242,235,0.93)), url('assets/images/parallax_oak_flatlands.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Diagonal lines (featured) */
+.napa-featured-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M0,32 L32,0' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.services-outlines-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/parallax_saguaro.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Concentric arcs (profile) */
+.profile-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='15' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='40' cy='40' r='30' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.neighborhoods-gallery-section {
-  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/parallax_legacy_ranch.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Plus signs (due diligence outlines) */
+.services-outlines-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18,12 V24 M12,18 H24' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.team-grid-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/category_ranch_land.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Diamond lattice (geographic gallery) */
+.neighborhoods-gallery-section .bg-topo-overlay {
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16,0 L32,16 L16,32 L0,16 Z' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.popular-categories-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/category_recreational.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Hexagon grid (team) */
+.team-grid-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='48'%3E%3Cpath d='M14,0 L42,0 L56,24 L42,48 L14,48 L0,24 Z' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.blog-grid-section {
-  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/blog_water_rights.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Small dots scattered (testimonials) */
+.napa-testimonials-panel .bg-topo-overlay {
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='0.8' fill='%23ffffff'/%3E%3C/svg%3E");
 }
-.faq-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/category_agriculture.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Chevrons (categories) */
+.popular-categories-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24'%3E%3Cpath d='M0,24 L20,0 L40,24' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
 }
-.contact-section {
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/category_riverfront.webp');
-  background-size: cover;
-  background-position: center;
+
+/* Pattern: Brick offset (blog) */
+.blog-grid-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24'%3E%3Crect x='0' y='0' width='48' height='12' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3Crect x='24' y='12' width='48' height='12' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Pattern: Concentric circles (FAQ) */
+.faq-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='10' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='30' cy='30' r='20' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='30' cy='30' r='28' stroke='%231b3942' stroke-width='0.3' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Pattern: Zigzag (contact) */
+.contact-section .bg-topo-overlay {
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cpath d='M0,20 L10,0 L20,20 L30,0 L40,20' stroke='%231b3942' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Pattern: Topo contours (explorations - kept original) */
+.explorations-section .bg-topo-overlay {
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 200 200'%3E%3Cpath d='M10,80 C40,90 60,60 100,80 C140,100 160,50 190,80 M0,120 C30,130 50,100 90,120 C130,140 150,90 180,120 M20,40 C50,50 70,20 110,40 C150,60 170,10 200,40 M0,160 C30,170 50,140 90,160 C130,180 150,130 180,160' fill='none' stroke='%23ffffff' stroke-width='1' stroke-dasharray='4 4'/%3E%3C/svg%3E");
 }
 
 /* 7. NAPA Services Section */
