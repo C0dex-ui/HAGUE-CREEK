@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="https://dev.haguecreek.com/assets/images/arizona_ranch_hero.webp">
  
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="index.css?v=1.1.3">
+  <link rel="stylesheet" href="index.css?v=1.1.4">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -239,15 +239,22 @@
 </head>
 <body>
 
-  <!-- Premium Curtain Preloader (Motionsites.ai Inspired) -->
+  <!-- Premium Loading Screen -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-content">
-      <div class="preloader-logo">
-        HAGUE<span>CREEK</span>
+    <div class="preloader-top-left">HAGUE CREEK</div>
+    <div class="preloader-center">
+      <div class="rotating-word-container">
+        <span class="rotating-word active">ACQUIRE</span>
+        <span class="rotating-word">ASSESS</span>
+        <span class="rotating-word">SECURE</span>
+        <span class="rotating-word">REPRESENT</span>
       </div>
-      <div class="preloader-bar">
-        <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
-      </div>
+    </div>
+    <div class="preloader-counter-wrap">
+      <span class="preloader-counter" id="preloader-counter">000</span>
+    </div>
+    <div class="preloader-progress-bar">
+      <div class="preloader-progress-inner" id="preloader-bar-fill"></div>
     </div>
   </div>
 
@@ -1492,6 +1499,15 @@
       </div>
     </section>
 
+    <!-- Infinite Marquee Section -->
+    <div class="marquee-strip-wrap">
+      <div class="bg-topo-overlay"></div>
+      <div class="marquee-strip">
+        <span class="marquee-item">ACQUIRING THE WEST &bull; DEDICATED LAND REPRESENTATION &bull; HAGUE CREEK LAND LEGACY &bull; </span>
+        <span class="marquee-item">ACQUIRING THE WEST &bull; DEDICATED LAND REPRESENTATION &bull; HAGUE CREEK LAND LEGACY &bull; </span>
+      </div>
+    </div>
+
   </main>
 
   <!-- NAPA White-Themed Footer Section -->
@@ -1546,7 +1562,11 @@
     </a>
   </div>
 
+  <!-- GSAP Core and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <!-- JavaScript Bundle -->
-  <script src="assets/js/main.js?v=1.0.2"></script>
+  <script src="assets/js/main.js?v=1.0.3"></script>
 </body>
 </html>

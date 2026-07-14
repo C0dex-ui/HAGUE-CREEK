@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPdfDownload();
   initCustomCursor();
   initMagneticElements();
+  initMarquee();
 });
 
 /**
@@ -281,7 +282,6 @@ function initMockSearch() {
       resultsSec.scrollIntoView({ behavior: 'smooth' });
     }
   });
-};
 
   // Lead capture forms mock redirect/completion alert
   const leadForms = document.querySelectorAll('.lead-form');
@@ -347,42 +347,66 @@ function initPdfDownload() {
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const barFill = document.getElementById('preloader-bar-fill');
+  const counterEl = document.getElementById('preloader-counter');
   if (!preloader || !barFill) return;
 
   // Lock body scroll
   document.body.classList.add('body-locked');
 
-  // Simulate progress loading bar
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 15) + 5;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      
-      // Load completed - remove preloader
-      setTimeout(() => {
-        barFill.style.width = '100%';
-        setTimeout(() => {
-          preloader.classList.add('loaded');
-          document.body.classList.remove('body-locked');
-          
-          // Trigger H1 line-reveal on preloader exit
-          setTimeout(() => {
-            const h1Reveal = document.querySelector('.hero h1 .reveal-slide-up');
-            if (h1Reveal) h1Reveal.classList.add('active');
-          }, 400);
-        }, 300);
-      }, 200);
-    } else {
-      barFill.style.width = progress + '%';
+  // Rotating words cycle
+  const words = document.querySelectorAll('.rotating-word');
+  let wordIndex = 0;
+  const wordInterval = setInterval(() => {
+    if (words.length > 0) {
+      words.forEach(w => w.classList.remove('active'));
+      wordIndex = (wordIndex + 1) % words.length;
+      words[wordIndex].classList.add('active');
     }
-  }, 60);
+  }, 675);
 
-  // Fallback in case loading gets stuck or window takes too long
-  window.addEventListener('load', () => {
-    progress = 100;
-  });
+  // requestAnimationFrame Counter
+  const duration = 2700; 
+  const startCount = 0;
+  const endCount = 100;
+  let startTime = null;
+
+  function animateCounter(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progressRatio = Math.min(elapsed / duration, 1);
+    
+    const currentCount = Math.floor(progressRatio * (endCount - startCount));
+    
+    if (counterEl) {
+      counterEl.textContent = String(currentCount).padStart(3, '0');
+    }
+    if (barFill) {
+      barFill.style.transform = `scaleX(${progressRatio})`;
+    }
+
+    if (progressRatio < 1) {
+      requestAnimationFrame(animateCounter);
+    } else {
+      // Count reached 100
+      clearInterval(wordInterval);
+      if (counterEl) counterEl.textContent = '100';
+      if (barFill) barFill.style.transform = 'scaleX(1)';
+      
+      // Complete delay, then fade out
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+        document.body.classList.remove('body-locked');
+        
+        // Trigger H1 line-reveal on preloader exit
+        setTimeout(() => {
+          const h1Reveal = document.querySelector('.hero h1 .reveal-slide-up');
+          if (h1Reveal) h1Reveal.classList.add('active');
+        }, 400);
+      }, 400);
+    }
+  }
+
+  requestAnimationFrame(animateCounter);
 }
 
 /**
@@ -484,5 +508,24 @@ function initMagneticElements() {
       // Smooth return to initial state
       btn.style.transform = '';
     });
+  });
+}
+
+/**
+ * 10. Infinite GSAP Marquee Strip
+ */
+function initMarquee() {
+  const marquee = document.querySelector('.marquee-strip');
+  if (!marquee) return;
+  
+  // Clone content for seamless looping
+  const clone = marquee.innerHTML;
+  marquee.innerHTML += clone;
+
+  gsap.to('.marquee-strip', {
+    xPercent: -50,
+    ease: 'none',
+    duration: 35,
+    repeat: -1
   });
 }

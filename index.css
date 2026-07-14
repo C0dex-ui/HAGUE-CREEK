@@ -1832,73 +1832,106 @@ body.body-locked {
   height: 100%;
   background-color: var(--clr-primary-dark);
   z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
   pointer-events: all;
-}
-
-.preloader-content {
-  text-align: center;
   color: var(--clr-bg-white);
-  padding: var(--space-md);
+  font-family: var(--font-sans);
 }
 
-.preloader-logo {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: var(--clr-bg-white);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-md);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: preloader-fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
-}
-
-.preloader-logo span {
-  color: var(--clr-accent);
-  font-weight: 400;
-}
-
-.preloader-bar {
-  width: 180px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.08);
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  border-radius: 2px;
-  opacity: 0;
-  animation: preloader-fade-in 0.6s ease forwards 0.5s;
-}
-
-.preloader-bar-fill {
+.preloader-top-left {
   position: absolute;
-  top: 0;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  animation: preloader-fade-in-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.preloader-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.rotating-word-container {
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  width: 320px;
+}
+
+.rotating-word {
+  position: absolute;
+  top: 100%;
   left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: normal;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.rotating-word.active {
+  top: 0;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preloader-counter-wrap {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+}
+
+.preloader-counter {
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 6vw, 7.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--clr-bg-white);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.95;
+}
+
+.preloader-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.preloader-progress-inner {
   height: 100%;
-  width: 0%;
-  background-color: var(--clr-accent);
-  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  background: linear-gradient(90deg, var(--clr-accent-light-gold) 0%, var(--clr-accent) 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  box-shadow: 0 0 12px rgba(189, 167, 110, 0.55);
 }
 
 .preloader.loaded {
   transform: translateY(-100%);
 }
 
-@keyframes preloader-fade-in-up {
+@keyframes preloader-fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes preloader-fade-in {
-  to {
-    opacity: 1;
   }
 }
 
@@ -2949,6 +2982,34 @@ body.body-locked {
   line-height: 1.8;
   color: var(--clr-primary-light);
   font-weight: 400;
+}
+
+/* 18. Infinite Marquee Strip Section */
+.marquee-strip-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--clr-primary-dark);
+  border-top: 1px solid var(--clr-border-gold);
+  border-bottom: 1px solid var(--clr-border-gold);
+  padding: 1.8rem 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.marquee-strip {
+  display: inline-flex;
+  gap: 2rem;
+  will-change: transform;
+}
+
+.marquee-item {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--clr-bg-cream);
+  opacity: 0.85;
+  letter-spacing: 0.05em;
 }
 
 
