@@ -2101,7 +2101,7 @@ body.body-locked {
   opacity: 0.03; /* Faint line for high-end architectural feel */
 }
 
-/* Faint Topographic Map Line Overlay for sections */
+/* Faint Topographic Map Line Overlay for sections — now only used as fallback */
 .bg-topo-overlay {
   position: absolute;
   top: 0;
@@ -2109,10 +2109,67 @@ body.body-locked {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.075; /* Increased opacity for better visibility */
+  opacity: 0.04;
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 200 200'%3E%3Cpath d='M10,80 C40,90 60,60 100,80 C140,100 160,50 190,80 M0,120 C30,130 50,100 90,120 C130,140 150,90 180,120 M20,40 C50,50 70,20 110,40 C150,60 170,10 200,40 M0,160 C30,170 50,140 90,160 C130,180 150,130 180,160' fill='none' stroke='%231b3942' stroke-width='1' stroke-dasharray='4 4'/%3E%3C/svg%3E");
   background-repeat: repeat;
+}
+
+/* Unique section background images — each section gets its own photo overlay */
+.dedication-section {
+  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/parallax_grasslands.webp');
+  background-size: cover;
+  background-position: center;
+}
+.listings-grid-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/parallax_mesa.webp');
+  background-size: cover;
+  background-position: center;
+}
+.napa-featured-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/parallax_canyon.webp');
+  background-size: cover;
+  background-position: center;
+}
+.profile-section {
+  background-image: linear-gradient(to bottom, rgba(245,242,235,0.96), rgba(245,242,235,0.93)), url('assets/images/parallax_oak_flatlands.webp');
+  background-size: cover;
+  background-position: center;
+}
+.services-outlines-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/parallax_saguaro.webp');
+  background-size: cover;
+  background-position: center;
+}
+.neighborhoods-gallery-section {
+  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/parallax_legacy_ranch.webp');
+  background-size: cover;
+  background-position: center;
+}
+.team-grid-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/category_ranch_land.webp');
+  background-size: cover;
+  background-position: center;
+}
+.popular-categories-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/category_recreational.webp');
+  background-size: cover;
+  background-position: center;
+}
+.blog-grid-section {
+  background-image: linear-gradient(to bottom, rgba(245,242,235,0.95), rgba(245,242,235,0.92)), url('assets/images/blog_water_rights.webp');
+  background-size: cover;
+  background-position: center;
+}
+.faq-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93)), url('assets/images/category_agriculture.webp');
+  background-size: cover;
+  background-position: center;
+}
+.contact-section {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.92)), url('assets/images/category_riverfront.webp');
+  background-size: cover;
+  background-position: center;
 }
 
 /* 7. NAPA Services Section */
@@ -2120,10 +2177,9 @@ body.body-locked {
   padding: var(--space-xl) 0;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(to right, rgba(27, 57, 66, 0.92) 0%, rgba(27, 57, 66, 0.92) 100%), url('assets/images/arizona_ranch_hero.webp');
+  background-image: linear-gradient(to right, rgba(27, 57, 66, 0.92) 0%, rgba(27, 57, 66, 0.92) 100%), url('assets/images/adobe_flats_listing.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: scroll, fixed; /* Multi-layer background: gradient scrolls, image is fixed in place */
 }
 
 .napa-services-section .services-header h2 {
