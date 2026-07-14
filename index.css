@@ -1842,3 +1842,126 @@ body.body-locked {
   background-repeat: repeat;
 }
 
+/* 7. NAPA Services Section */
+.napa-services-section {
+  padding: var(--space-xl) 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--clr-bg-warm);
+}
+
+.services-header {
+  max-width: 700px;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.services-subtitle {
+  font-family: var(--font-sans);
+  color: var(--clr-text-light);
+  font-size: 1.1rem;
+  margin-top: var(--space-xs);
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  background-color: var(--clr-bg-white);
+  border-radius: var(--radius-md); /* 10px rounded corners */
+  border: 1px solid var(--clr-border);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  position: relative;
+  z-index: 5;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--clr-border-gold);
+}
+
+.service-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-round);
+  background-color: rgba(148, 121, 47, 0.08); /* Gold tinted background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon-wrapper {
+  background-color: var(--clr-accent);
+}
+
+.service-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--clr-accent);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon {
+  color: var(--clr-bg-white);
+}
+
+.service-title {
+  font-family: var(--font-serif); /* Frank Ruhl Libre */
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.service-description {
+  font-size: 0.95rem;
+  color: var(--clr-text-light);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  flex-grow: 1;
+}
+
+.service-link {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.service-link:hover {
+  color: var(--clr-primary-light);
+}
+
+.service-link-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+.service-link:hover .service-link-icon {
+  transform: translateX(4px);
+}
+
