@@ -3138,12 +3138,12 @@ body.body-locked {
 .explorations-left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   align-self: start;
   position: sticky;
-  top: 6rem;
-  padding-top: 2rem;
+  top: 50vh;
+  transform: translateY(-50%);
   z-index: 2;
 }
 
