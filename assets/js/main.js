@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
   initFaqAccordion();
+  initCountUp(); // before stagger so welcome can call __runWelcomeCounts
   initScrollReveals();
   initStaggerGroups();
   initHeroParallax();
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialCarousel();
   initLeadForm();
   initJumpFilters();
-  initCountUp();
   initFloatBar();
   initPdfDownload();
 });
@@ -196,6 +196,8 @@ function initStaggerGroups() {
 
   if (prefersReducedMotion()) {
     groups.forEach((g) => g.classList.add('is-inview'));
+    // Still jump counts to final values
+    if (typeof window.__runWelcomeCounts === 'function') window.__runWelcomeCounts();
     return;
   }
 
@@ -204,8 +206,19 @@ function initStaggerGroups() {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-inview');
-        // Also activate any nested .reveal
         entry.target.querySelectorAll('.reveal').forEach((r) => r.classList.add('active'));
+
+        // Start ALL welcome metric counters when welcome band enters view
+        if (
+          entry.target.classList.contains('welcome-wrap') ||
+          entry.target.querySelector?.('.welcome-metrics')
+        ) {
+          if (typeof window.__runWelcomeCounts === 'function') {
+            // slight delay so numbers animate after metrics fade in
+            setTimeout(() => window.__runWelcomeCounts(), 280);
+          }
+        }
+
         obs.unobserve(entry.target);
       });
     },
@@ -213,9 +226,7 @@ function initStaggerGroups() {
   );
 
   groups.forEach((g) => {
-    if (!g.classList.contains('stagger-children') && g.classList.contains('welcome-wrap')) {
-      // welcome uses its own metric rules
-    } else if (
+    if (
       !g.classList.contains('stagger-children') &&
       (g.classList.contains('process-grid') ||
         g.classList.contains('services-grid') ||
@@ -635,42 +646,113 @@ function initJumpFilters() {
 }
 
 /* --------------------------------------------------------------------------
-   Animated stats count-up
+   Animated stats count-up — ALL Welcome metrics (and any .count-up)
    -------------------------------------------------------------------------- */
 function initCountUp() {
-  const nodes = document.querySelectorAll('.count-up');
+  const nodes = Array.from(document.querySelectorAll('.count-up'));
   if (!nodes.length) return;
 
-  const animate = (el) => {
-    const target = Number(el.dataset.target || 0);
+  const formatValue = (value, el) => {
     const suffix = el.dataset.suffix || '';
-    const duration = 1600;
-    const start = performance.now();
+    const prefix = el.dataset.prefix || '';
+    const formatted = Number(value).toLocaleString('en-US');
+    return prefix + formatted + suffix;
+  };
 
-    const step = (now) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      const value = Math.floor(eased * target);
-      el.textContent = value.toLocaleString() + suffix;
-      if (t < 1) requestAnimationFrame(step);
-      else el.textContent = target.toLocaleString() + suffix;
+  // Reset all counters to zero on load
+  nodes.forEach((el) => {
+    el.textContent = formatValue(0, el);
+    el.dataset.counted = '0';
+  });
+
+  const animate = (el, delayMs = 0) => {
+    if (el.dataset.counted === '1') return;
+    el.dataset.counted = '1';
+
+    const target = Number(el.dataset.target || 0);
+    const duration = Number(el.dataset.duration || 2000);
+
+    el.textContent = formatValue(0, el);
+
+    const run = () => {
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        const value = Math.round(target * eased);
+        el.textContent = formatValue(value, el);
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = formatValue(target, el);
+      };
+      requestAnimationFrame(step);
     };
 
-    requestAnimationFrame(step);
+    if (delayMs > 0) setTimeout(run, delayMs);
+    else run();
   };
+
+  /** Animate every .count-up inside Welcome (or a root) — public so stagger can call it */
+  const runWelcomeCounts = () => {
+    const welcomeCounters = document.querySelectorAll(
+      '.welcome-metrics .count-up, #welcome-section .count-up, [data-count-group] .count-up'
+    );
+    const list = welcomeCounters.length ? welcomeCounters : nodes;
+    list.forEach((el, i) => {
+      el.dataset.counted = '0'; // allow run
+      animate(el, i * 140);
+    });
+  };
+
+  window.__runWelcomeCounts = runWelcomeCounts;
+
+  if (prefersReducedMotion()) {
+    nodes.forEach((el) => {
+      el.textContent = formatValue(Number(el.dataset.target || 0), el);
+      el.dataset.counted = '1';
+    });
+    return;
+  }
+
+  // Observe the whole welcome section + metrics row so all four fire together
+  const roots = document.querySelectorAll(
+    '#welcome-section, .welcome-wrap, .welcome-metrics, [data-count-group]'
+  );
+
+  let started = false;
+  const startOnce = () => {
+    if (started) return;
+    started = true;
+    runWelcomeCounts();
+  };
+
+  if (!roots.length) {
+    // Fallback: each node on its own
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    nodes.forEach((n) => io.observe(n));
+    return;
+  }
 
   const io = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        animate(entry.target);
-        obs.unobserve(entry.target);
+        startOnce();
+        roots.forEach((r) => obs.unobserve(r));
       });
     },
-    { threshold: 0.4 }
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.15 }
   );
 
-  nodes.forEach((n) => io.observe(n));
+  roots.forEach((r) => io.observe(r));
 }
 
 /* --------------------------------------------------------------------------

@@ -28,7 +28,7 @@
   <link rel="preload" as="image" href="assets/images/arizona_ranch_hero.webp" type="image/webp">
  
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="index.css?v=3.6.0">
+  <link rel="stylesheet" href="index.css?v=3.7.0">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -270,7 +270,7 @@
     <div class="container top-bar-inner">
       <div class="top-bar-left">
         <span class="top-bar-pulse" aria-hidden="true"></span>
-        <span class="top-bar-live"><strong>6 parcels</strong> currently available · LandID mapped</span>
+        <span class="top-bar-live"><strong>Active inventory</strong> · LandID mapped parcels</span>
         <a href="tel:+15205550190" class="top-bar-phone">+1 (520) 555-0190</a>
       </div>
       <div class="top-bar-right">
@@ -442,21 +442,29 @@
           </p>
         </header>
 
-        <div class="welcome-metrics" id="stats-strip" aria-label="Brokerage highlights">
+        <div class="welcome-metrics" id="stats-strip" data-count-group aria-label="Brokerage highlights">
           <div class="welcome-metric">
-            <span class="welcome-metric-value"><span class="count-up" data-target="12000" data-suffix="+">0</span></span>
+            <span class="welcome-metric-value">
+              <span class="count-up" data-target="12000" data-suffix="+" data-duration="2200">0+</span>
+            </span>
             <span class="welcome-metric-label">Acres represented</span>
           </div>
           <div class="welcome-metric">
-            <span class="welcome-metric-value">$<span class="count-up" data-target="48" data-suffix="M">0</span></span>
+            <span class="welcome-metric-value">
+              <span class="count-up" data-target="48" data-prefix="$" data-suffix="M" data-duration="2000">$0M</span>
+            </span>
             <span class="welcome-metric-label">In land sales</span>
           </div>
           <div class="welcome-metric">
-            <span class="welcome-metric-value"><span class="count-up" data-target="200" data-suffix="+">0</span></span>
+            <span class="welcome-metric-value">
+              <span class="count-up" data-target="200" data-suffix="+" data-duration="2000">0+</span>
+            </span>
             <span class="welcome-metric-label">Satisfied clients</span>
           </div>
           <div class="welcome-metric">
-            <span class="welcome-metric-value"><span class="count-up" data-target="25" data-suffix="+">0</span></span>
+            <span class="welcome-metric-value">
+              <span class="count-up" data-target="25" data-suffix="+" data-duration="1800">0+</span>
+            </span>
             <span class="welcome-metric-label">Years experience</span>
           </div>
         </div>
@@ -503,37 +511,20 @@
     <section id="listings-section" class="listings-section">
       <div class="container">
 
-        <div class="listings-head reveal">
-          <div class="listings-head-copy">
-            <span class="eyebrow">Finest Portfolio</span>
-            <h2>Best Arizona Land Listings Available</h2>
-            <p>Ranches and rural acreage reviewed for water, access, zoning, and APN accuracy.</p>
-          </div>
-          <div class="listings-head-meta">
-            <div class="listings-count-card">
-              <span class="listings-count-num" id="listings-count">8</span>
-              <span class="listings-count-label">Properties in portfolio</span>
-            </div>
-            <a href="#contact-section" class="btn btn-primary">Request a private search</a>
-          </div>
+        <div class="section-header text-center reveal">
+          <span class="eyebrow">Portfolio</span>
+          <h2>Arizona land listings</h2>
+          <p>Ranches and rural acreage reviewed for water, access, zoning, and APN accuracy.</p>
         </div>
 
-        <div class="listings-toolbar reveal">
-          <div class="filter-group" role="tablist" aria-label="Filter by status">
-            <span class="filter-group-label">Status</span>
-            <div class="filter-tabs">
-              <button type="button" class="filter-tab active" data-filter="all">All</button>
-              <button type="button" class="filter-tab" data-filter="available">For Sale</button>
-              <button type="button" class="filter-tab" data-filter="pending">Pending</button>
-              <button type="button" class="filter-tab" data-filter="sold">Sold</button>
-            </div>
-          </div>
+        <div class="listings-toolbar reveal" role="tablist" aria-label="Filter listings by status">
+          <button type="button" class="filter-tab active" data-filter="all">All <span class="filter-count" id="listings-count">8</span></button>
+          <button type="button" class="filter-tab" data-filter="available">For Sale</button>
+          <button type="button" class="filter-tab" data-filter="pending">Pending</button>
+          <button type="button" class="filter-tab" data-filter="sold">Sold</button>
         </div>
 
-        <div class="listings-results-bar">
-          <p id="listings-results-text">Showing <strong>4</strong> of <strong>8</strong> listings</p>
-          <p class="listings-results-note">LandID mapped · Water diligence noted on active inventory</p>
-        </div>
+        <p class="listings-results-line" id="listings-results-text">Showing <strong>4</strong> of <strong>8</strong> listings</p>
 
         <div class="listings-grid stagger-children" id="listings-grid">
 
@@ -986,6 +977,7 @@
             <div class="blog-body">
               <span class="blog-meta">Due Diligence</span>
               <h3 class="blog-title"><a href="#faq-section">Arizona Water Rights &amp; AMA Basins</a></h3>
+              <p class="blog-excerpt">Grandfathered claims, open basins, and ADWR well registration basics.</p>
             </div>
           </article>
           <article class="blog-card">
@@ -995,6 +987,7 @@
             <div class="blog-body">
               <span class="blog-meta">Buyer Advice</span>
               <h3 class="blog-title"><a href="#faq-section">Deeded Access &amp; Easements</a></h3>
+              <p class="blog-excerpt">How to avoid landlocked parcels before you write an offer.</p>
             </div>
           </article>
           <article class="blog-card">
@@ -1004,6 +997,7 @@
             <div class="blog-body">
               <span class="blog-meta">Zoning</span>
               <h3 class="blog-title"><a href="#faq-section">RU-4 vs RU-36 Zoning Codes</a></h3>
+              <p class="blog-excerpt">Minimum acreage and what each code allows on rural land.</p>
             </div>
           </article>
           <article class="blog-card">
@@ -1013,6 +1007,7 @@
             <div class="blog-body">
               <span class="blog-meta">Finance</span>
               <h3 class="blog-title"><a href="#faq-section">Financing Raw Arizona Acreage</a></h3>
+              <p class="blog-excerpt">Down payments, ag credit options, and land-loan expectations.</p>
             </div>
           </article>
         </div>
@@ -1023,9 +1018,9 @@
     <section id="faq-section" class="faq-section">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="eyebrow">Resources</span>
-          <h2>Frequently Asked Questions</h2>
-          <p>Direct answers on water basins, APNs, zoning, financing, and due diligence for Arizona land.</p>
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently asked questions</h2>
+          <p>Water basins, APNs, zoning, financing, and land due diligence.</p>
         </div>
         <div class="faq-wrapper reveal">
           <div class="accordion-item">
@@ -1202,7 +1197,7 @@
               <label for="form-message">Describe Your Vision / Requirements</label>
               <textarea id="form-message" name="message" class="form-textarea" required placeholder="Zoning needs, water access, topography, or parcel APN…"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary form-submit-btn">Submit Request</button>
+            <button type="submit" class="btn btn-accent form-submit-btn">Submit request</button>
           </form>
         </div>
       </div>
@@ -1211,14 +1206,15 @@
 </main>
 
   <!-- Sticky first-impression conversion bar -->
+  <!-- Desktop float CTA (hidden on small screens — mobile uses sticky call) -->
   <div class="float-bar" id="float-bar" hidden>
     <div class="float-bar-inner">
       <div class="float-bar-copy">
-        <strong>Ready to acquire Arizona land?</strong>
-        <span>Talk with a designated land broker today.</span>
+        <strong>Ready to talk land?</strong>
+        <span>Speak with Hague Creek in Tucson.</span>
       </div>
       <div class="float-bar-actions">
-        <a href="tel:+15205550190" class="btn btn-outline float-call">Call +1 (520) 555-0190</a>
+        <a href="tel:+15205550190" class="btn btn-outline float-call">Call now</a>
         <a href="#contact-section" class="btn btn-accent">Request consultation</a>
       </div>
       <button type="button" class="float-bar-close" id="float-bar-close" aria-label="Dismiss">×</button>
@@ -1290,6 +1286,6 @@
     Call +1 (520) 555-0190
   </a>
 
-  <script src="assets/js/main.js?v=3.5.3"></script>
+  <script src="assets/js/main.js?v=3.7.0"></script>
 </body>
 </html>
