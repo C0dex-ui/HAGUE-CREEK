@@ -1372,18 +1372,22 @@ section {
 
 /* 14. Responsive Grid & Columns Footer (NAPA Light Theme) */
 .footer {
-  background-color: var(--clr-bg-warm); /* NAPA Cream #fbf9f6 */
-  color: var(--clr-charcoal);
-  padding: var(--space-xl) 0 var(--space-md) 0;
-  border-top: 1px solid var(--clr-border);
+  background-color: var(--clr-primary-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0;
+  border-top: none;
 }
 
 .footer-top {
   display: grid;
   gap: var(--space-xl);
   grid-template-columns: 1fr;
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--clr-border);
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 
 @media (min-width: 768px) {
@@ -1394,53 +1398,85 @@ section {
 
 @media (min-width: 1024px) {
   .footer-top {
-    grid-template-columns: 4fr 2.5fr 2.5fr 3fr;
+    grid-template-columns: 4fr 3fr 3.5fr;
+    gap: var(--space-xl);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
 .footer-logo {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--clr-primary);
-  margin-bottom: var(--space-sm);
+  font-size: 2rem;
+  color: var(--clr-bg-white);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.04em;
 }
 
 .footer-logo span {
   color: var(--clr-accent);
 }
 
+.footer-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 340px;
+  margin-bottom: var(--space-md);
+}
+
 .footer-col p {
-  color: var(--clr-text-light);
-  font-size: var(--fs-meta);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .footer-col h4.footer-title {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 800;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--clr-accent);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-md);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-lg);
 }
 
 .footer-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0.75rem;
 }
 
 .footer-links a {
-  color: var(--clr-text-light);
-  font-size: var(--fs-meta);
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 400;
   transition: var(--transition-fast);
 }
 
 .footer-links a:hover {
-  color: var(--clr-primary);
-  padding-left: 4px;
+  color: var(--clr-accent);
+  padding-left: 6px;
+}
+
+.footer-contact {
+  margin-bottom: 0.75rem;
+}
+
+.footer-contact strong {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.footer-contact a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.footer-contact a:hover {
+  color: var(--clr-accent-light-gold);
 }
 
 .footer-socials {
@@ -1451,34 +1487,29 @@ section {
 }
 
 .footer-socials a {
-  width: 36px;
-  height: 36px;
-  background-color: var(--clr-bg-white);
-  border-radius: var(--radius-sm);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--clr-primary);
-  border: 1px solid var(--clr-border);
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: var(--transition-fast);
 }
 
 .footer-socials a:hover {
   background-color: var(--clr-accent);
-  color: var(--clr-bg-white);
+  color: var(--clr-primary-dark);
   border-color: var(--clr-accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .footer-bottom {
-  padding-top: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  align-items: center;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--clr-text-light);
+  padding: var(--space-md) 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .footer-bottom-layout {
@@ -1497,7 +1528,7 @@ section {
 }
 
 .footer-bottom-layout a {
-  color: var(--clr-text-light);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .footer-bottom-layout a:hover {
