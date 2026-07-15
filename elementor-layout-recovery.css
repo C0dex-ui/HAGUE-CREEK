@@ -1,0 +1,307 @@
+/**
+ * Hague Creek — Elementor layout recovery
+ * Paste ONCE into: Elementor → ☰ Site Settings → Custom CSS
+ * (or Appearance → Customize → Additional CSS)
+ *
+ * Purpose:
+ * - Replace CloneWebX per-widget Custom CSS without breaking layout
+ * - Keep background overlays working (never force position:static globally)
+ * - Scope to homepage Elementor page only (.elementor-14)
+ */
+
+/* --------------------------------------------------------------------------
+   0. Undo clone killers (if any leftover rules still load)
+   -------------------------------------------------------------------------- */
+.elementor-14 .elementor-element {
+  /* Do NOT set position:static — overlays & absolute children need positioning */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   1. Fonts (Google — not clonewebx)
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+.elementor-14 {
+  color: #3a4148;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.elementor-14 h1,
+.elementor-14 h2,
+.elementor-14 h3,
+.elementor-14 .elementor-heading-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   2. Containers — keep Elementor flex layout stable
+   -------------------------------------------------------------------------- */
+.elementor-14 .e-con {
+  position: relative; /* required for background overlays */
+  box-sizing: border-box;
+}
+
+.elementor-14 .e-con-full,
+.elementor-14 .e-con.e-flex {
+  /* Elementor sets --display / --flex-direction via generated CSS — don't fight it */
+  min-width: 0;
+}
+
+/* Nested content above overlays */
+.elementor-14 .e-con > .e-con-inner,
+.elementor-14 .e-con > .elementor-element {
+  position: relative;
+  z-index: 1;
+}
+
+/* Background overlay pseudo — leave Elementor rules; only ensure stacking */
+.elementor-14 .e-con.e-con-boxed,
+.elementor-14 .e-con.e-con-full {
+  isolation: isolate;
+}
+
+/* Images never overflow columns */
+.elementor-14 img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Widgets shouldn't collapse weirdly after custom_css wipe */
+.elementor-14 .elementor-widget {
+  max-width: 100%;
+}
+
+.elementor-14 .elementor-widget-wrap,
+.elementor-14 .elementor-widget-container {
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   3. Buttons
+   -------------------------------------------------------------------------- */
+.elementor-14 .elementor-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2 !important;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Brand blue CTAs when Elementor uses default accent-ish buttons */
+.elementor-14 .elementor-button-link:hover {
+  opacity: 0.95;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography rhythm after clone CSS is gone
+   -------------------------------------------------------------------------- */
+.elementor-14 p {
+  margin: 0 0 0.75em;
+}
+
+.elementor-14 p:last-child {
+  margin-bottom: 0;
+}
+
+.elementor-14 .elementor-heading-title {
+  margin: 0;
+}
+
+/* Hero-ish white text: only when container has light-on-dark class
+   Add CSS class "hc-on-dark" on hero/footer dark sections in Advanced → CSS Classes */
+.elementor-14 .hc-on-dark,
+.elementor-14 .hc-on-dark .elementor-heading-title,
+.elementor-14 .hc-on-dark .elementor-widget-text-editor,
+.elementor-14 .hc-on-dark p {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   5. Common homepage section spacing
+   -------------------------------------------------------------------------- */
+.elementor-14 > .e-con,
+.elementor-14 > .elementor-section {
+  width: 100%;
+}
+
+/* Center constrained content rows */
+.elementor-14 .e-con.e-child {
+  max-width: 100%;
+}
+
+/* 4-column card rows: if clone used equal-width children without CSS, help them wrap */
+@media (min-width: 1025px) {
+  .elementor-14 .hc-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.35rem;
+  }
+  .elementor-14 .hc-cards-row > .e-con,
+  .elementor-14 .hc-cards-row > .elementor-element {
+    flex: 1 1 calc(25% - 1.35rem);
+    max-width: calc(25% - 1rem);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .elementor-14 .hc-cards-row > .e-con,
+  .elementor-14 .hc-cards-row > .elementor-element {
+    flex: 1 1 calc(50% - 0.75rem);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-14 .hc-cards-row {
+    flex-direction: column;
+  }
+  .elementor-14 .hc-cards-row > .e-con,
+  .elementor-14 .hc-cards-row > .elementor-element {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero search bar (if still HTML widget) — keep usable
+   -------------------------------------------------------------------------- */
+.elementor-14 form[role='search'],
+.elementor-14 .hc-hero-search,
+.elementor-14 form.ercpesln {
+  width: 100%;
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr auto;
+  gap: 0;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  padding: 0.5rem;
+  text-align: left;
+  color: #1c2227;
+}
+
+.elementor-14 form[role='search'] > div,
+.elementor-14 form.ercpesln > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-right: 1px solid rgba(28, 34, 39, 0.1);
+  min-width: 0;
+}
+
+.elementor-14 form[role='search'] > div:last-of-type,
+.elementor-14 form.ercpesln > div:last-of-type {
+  border-right: none;
+}
+
+.elementor-14 form[role='search'] label,
+.elementor-14 form.ercpesln label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5c656e;
+  margin-bottom: 0.18rem;
+}
+
+.elementor-14 form[role='search'] input,
+.elementor-14 form[role='search'] select,
+.elementor-14 form.ercpesln input,
+.elementor-14 form.ercpesln select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: #1c2227;
+  width: 100%;
+  font-family: inherit;
+}
+
+.elementor-14 form[role='search'] button,
+.elementor-14 form.ercpesln button {
+  align-self: stretch;
+  margin: 0.1rem;
+  padding: 0 1.35rem;
+  background: #198ecd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.elementor-14 form[role='search'] button:hover,
+.elementor-14 form.ercpesln button:hover {
+  background: #1476ab;
+}
+
+@media (max-width: 767px) {
+  .elementor-14 form[role='search'],
+  .elementor-14 form.ercpesln {
+    grid-template-columns: 1fr;
+  }
+  .elementor-14 form[role='search'] > div,
+  .elementor-14 form.ercpesln > div {
+    border-right: none;
+    border-bottom: 1px solid rgba(28, 34, 39, 0.1);
+  }
+  .elementor-14 form[role='search'] button,
+  .elementor-14 form.ercpesln button {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Contact form block (clone class) — keep readable grid
+   -------------------------------------------------------------------------- */
+.elementor-14 form.zsc6tviy {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  color: inherit;
+}
+
+.elementor-14 form.zsc6tviy input,
+.elementor-14 form.zsc6tviy select,
+.elementor-14 form.zsc6tviy textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   8. Mobile safety
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .elementor-14 .e-con {
+    overflow: visible; /* don't clip overlays/content unless needed */
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-14 {
+    font-size: 15px;
+  }
+}

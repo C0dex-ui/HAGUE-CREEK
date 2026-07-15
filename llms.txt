@@ -1,45 +1,44 @@
-# Hague Creek Land Brokerage
+# Hague Creek Companies
 
-Hague Creek is a specialized Arizona land broker helping clients buy, sell, and invest in premium ranches, agricultural parcels, and rural acreage across Arizona. Tagline: Rural Community Specialists. Based in Tucson.
+Hague Creek Companies is an Arizona rural community specialist focused on real estate entitlement, land brokerage, and agricultural asset management. Tagline: Rural Community Specialists. Connecting with clients through integrity, western values, and the land.
 
 ## Contact Information
-- **Name:** Hague Creek Land Brokerage
-- **Designated Broker & Owner:** Arthur Hague (AZ DRE License #BR654321000)
-- **Physical Address:** 100 E Congress St, Suite 300, Tucson, AZ 85701
-- **Phone:** +1-520-555-0190
+- **Name:** Hague Creek Companies
+- **Entity:** Hague Creek Properties, Inc. (AZ CO626111000)
+- **President:** Erik Swanson
+- **Email:** info@haguecreek.com
+- **Physical Address:** 2114 E Taxidea Way, Phoenix, AZ 85048
+- **Website:** https://haguecreek.com/
 - **Operating Hours:** Mon-Fri 08:00 AM - 05:00 PM MST
 
 ## Primary Keyword
 - Arizona land broker
 
-## Core Services & Focus Areas
-- Ranch & legacy lands: rural ranches, livestock grazing tracts, recreational acreage
-- Agricultural investments: crop acreage, irrigation basins, water-rights valuation
-- Due diligence: APN verification, boundary analysis, zoning, LandID map configuration
-- Sell land, buy Arizona acreage, land investment consulting
+## Core Services
+- Rural land & ranch brokerage
+- Real estate entitlement
+- Agricultural asset management
+- Supporting aviation / rural development services
 
 ## Service Regions
-- Cochise County, AZ
-- Pima County, AZ
-- Yavapai County, AZ
-- Santa Cruz County, AZ
-- Maricopa County, AZ
-- Tucson metro, AZ
-- Phoenix metro, AZ
+- Maricopa County / Phoenix metro
+- Pima County / Tucson
+- Cochise County
+- Yavapai County
+- Statewide Arizona rural markets
 
 ## Main Navigation / Sitemap
-- **Home** - https://dev.haguecreek.com/
-- **About** - https://dev.haguecreek.com/#about-section
-- **Properties** - https://dev.haguecreek.com/#listings-section
-  - Available Properties - https://dev.haguecreek.com/#listings-section
-  - Sold Properties - https://dev.haguecreek.com/#listings-section
-- **Resources**
-  - Buying Land - https://dev.haguecreek.com/#blog-section
-  - Financing - https://dev.haguecreek.com/#faq-section
-  - Frequently Asked Questions - https://dev.haguecreek.com/#faq-section
-- **Testimonials** - https://dev.haguecreek.com/#testimonials-section
-- **Blog** - https://dev.haguecreek.com/#blog-section
-- **Contact** - https://dev.haguecreek.com/#contact-section
+- Home — https://haguecreek.com/
+- About (Erik Swanson) — https://haguecreek.com/#about-section
+- Properties — https://haguecreek.com/#listings-section
+- Resources / FAQ — https://haguecreek.com/#faq-section
+- Blog — https://haguecreek.com/#blog-section
+- Contact / Inquiry form — https://haguecreek.com/#contact-section
 
-## Listing Attributes (land-specific)
-Status, price, acreage, county, property type, zoning, water rights/access, agent, PDF brochure request with lead capture.
+## Authentic assets (sourced from client site / public profile)
+- http://www.haguecreek.com/assets/images/banner.png
+- http://www.haguecreek.com/assets/images/card_front.jpg
+- http://www.haguecreek.com/assets/images/footer.png
+- http://www.haguecreek.com/assets/images/background.jpg
+- Erik Swanson portrait (public Project CENTRL profile)
+- Hero video: assets/hague_bg_video.mp4 (project-provided)

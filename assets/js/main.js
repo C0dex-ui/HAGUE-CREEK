@@ -313,167 +313,366 @@ function initSmoothAnchors() {
 }
 
 /* --------------------------------------------------------------------------
-   Listings filter + load more + hero search
+   Unified listings system — hero search form ↔ status tabs ↔ listing cards
+   Single filter state drives cards, tabs, chips, counts, and load-more.
    -------------------------------------------------------------------------- */
 function initListingsFilter() {
   const cards = Array.from(document.querySelectorAll('.listing-card'));
-  const tabs = document.querySelectorAll('.filter-tab');
+  const tabs = Array.from(document.querySelectorAll('.filter-tab'));
   const grid = document.getElementById('listings-grid');
+  const section = document.getElementById('listings-section');
   const loadMoreBtn = document.getElementById('load-more-listings');
   const searchForm = document.getElementById('hero-search-form');
+  const clearBtn = document.getElementById('listings-clear-btn');
+  const activeFiltersEl = document.getElementById('listings-active-filters');
+  const locationInput = document.getElementById('search-location');
+  const typeSelect = document.getElementById('search-type');
+  const statusSelect = document.getElementById('search-status');
+  const heroHint = document.getElementById('hero-search-hint');
+
   if (!cards.length) return;
 
-  let activeFilter = 'all';
-  let showAll = false;
   const INITIAL_COUNT = 4;
+  const STATUS_KEYS = ['available', 'pending', 'sold'];
+  const TYPE_KEYS = ['ranch', 'agriculture', 'recreational', 'riverfront'];
+
+  const state = {
+    location: '',
+    type: '',
+    status: '', // '' | available | pending | sold
+    showAll: false,
+    fromHero: false,
+  };
 
   function clearNoResults() {
-    const msg = document.querySelector('.no-results-msg');
-    if (msg) msg.remove();
+    grid?.querySelector('.no-results-msg')?.remove();
   }
 
-  function cardMatches(card, filter) {
-    if (filter === 'all') return true;
-    const status = card.dataset.status || '';
-    const county = card.dataset.county || '';
-    const type = card.dataset.type || '';
-    return filter === status || filter === county || filter === type;
+  /** Match a card against location + type + status (AND). */
+  function cardMatches(card, overrides = {}) {
+    const location = overrides.location !== undefined ? overrides.location : state.location;
+    const typeFilter = overrides.type !== undefined ? overrides.type : state.type;
+    const statusFilter = overrides.status !== undefined ? overrides.status : state.status;
+
+    const status = (card.dataset.status || '').toLowerCase();
+    const county = (card.dataset.county || '').toLowerCase();
+    const type = (card.dataset.type || '').toLowerCase();
+    const searchBlob = (card.dataset.search || '').toLowerCase();
+    const title = (card.querySelector('.listing-title')?.textContent || '').toLowerCase();
+    const locText = (card.querySelector('.listing-loc')?.textContent || '').toLowerCase();
+    const q = (location || '').toLowerCase().trim();
+
+    const locOk =
+      !q ||
+      searchBlob.includes(q) ||
+      title.includes(q) ||
+      county.includes(q) ||
+      locText.includes(q) ||
+      type.includes(q);
+
+    const typeOk = !typeFilter || type === typeFilter;
+    const statusOk = !statusFilter || status === statusFilter;
+
+    return locOk && typeOk && statusOk;
+  }
+
+  function hasActiveFilters() {
+    return Boolean(state.location || state.type || state.status);
+  }
+
+  function updateTabCounts() {
+    // Counts respect location + type filters, but not status (so tabs stay useful)
+    const base = { all: 0, available: 0, pending: 0, sold: 0 };
+    cards.forEach((card) => {
+      if (!cardMatches(card, { status: '' })) return;
+      base.all += 1;
+      const s = (card.dataset.status || '').toLowerCase();
+      if (base[s] !== undefined) base[s] += 1;
+    });
+
+    document.querySelectorAll('[data-count-for]').forEach((el) => {
+      const key = el.getAttribute('data-count-for');
+      if (key && base[key] !== undefined) el.textContent = String(base[key]);
+    });
   }
 
   function updateResultsBar(visibleCount, matchCount) {
     const resultsText = document.getElementById('listings-results-text');
-    const countEl = document.getElementById('listings-count');
-    if (resultsText) {
-      resultsText.innerHTML = `Showing <strong>${visibleCount}</strong> of <strong>${matchCount}</strong> listings`;
-    }
-    if (countEl) {
-      countEl.textContent = String(matchCount);
+    if (!resultsText) return;
+
+    if (matchCount === 0) {
+      resultsText.innerHTML = `No listings match your search`;
+    } else if (hasActiveFilters()) {
+      resultsText.innerHTML = `Showing <strong>${visibleCount}</strong> of <strong>${matchCount}</strong> matching listing${matchCount === 1 ? '' : 's'}`;
+    } else {
+      resultsText.innerHTML = `Showing <strong>${visibleCount}</strong> of <strong>${matchCount}</strong> listing${matchCount === 1 ? '' : 's'}`;
     }
   }
 
-  function applyFilter(filter, { expand = false, scroll = false } = {}) {
-    activeFilter = filter;
-    if (expand) showAll = true;
+  function updateHeroHint(matchCount) {
+    if (!heroHint) return;
+    if (!hasActiveFilters()) {
+      heroHint.textContent = 'Filters the Arizona land listings below';
+      return;
+    }
+    if (matchCount === 0) {
+      heroHint.textContent = 'No listings match — try another county, type, or status';
+    } else {
+      heroHint.textContent = `${matchCount} listing${matchCount === 1 ? '' : 's'} match — scrolled to portfolio`;
+    }
+  }
 
+  function updateActiveFiltersUI() {
+    const chips = [];
+    if (state.location) {
+      const display = locationInput?.value?.trim() || state.location;
+      chips.push(`Keyword: “${display}”`);
+    }
+    if (state.type) {
+      const label = typeSelect?.selectedOptions?.[0]?.text || state.type;
+      chips.push(`Type: ${label}`);
+    }
+    if (state.status) {
+      const label =
+        state.status === 'available'
+          ? 'For Sale'
+          : state.status.charAt(0).toUpperCase() + state.status.slice(1);
+      chips.push(`Status: ${label}`);
+    }
+
+    const hasFilters = chips.length > 0;
+    if (clearBtn) clearBtn.hidden = !hasFilters;
+    if (activeFiltersEl) {
+      activeFiltersEl.hidden = !hasFilters;
+      activeFiltersEl.innerHTML = hasFilters
+        ? chips.map((c) => `<span class="filter-chip">${c}</span>`).join('')
+        : '';
+    }
+  }
+
+  function syncHeroFromState() {
+    if (locationInput) {
+      // Keep user casing if they typed it; otherwise restore from state
+      if ((locationInput.value || '').toLowerCase().trim() !== state.location) {
+        locationInput.value = state.location
+          ? state.location.charAt(0).toUpperCase() + state.location.slice(1)
+          : '';
+      }
+    }
+    if (typeSelect) typeSelect.value = state.type;
+    if (statusSelect) statusSelect.value = state.status;
+  }
+
+  function syncTabsFromState() {
+    const tabKey = state.status || 'all';
+    tabs.forEach((t) => {
+      const key = t.dataset.filter || 'all';
+      const active = key === tabKey;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function pulseSection() {
+    if (!section) return;
+    section.classList.remove('listings-filter-flash');
+    // reflow so animation can restart
+    void section.offsetWidth;
+    section.classList.add('listings-filter-flash');
+    window.setTimeout(() => section.classList.remove('listings-filter-flash'), 1400);
+  }
+
+  function scrollToListings() {
+    if (!section) return;
+    section.scrollIntoView({
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+      block: 'start',
+    });
+    pulseSection();
+  }
+
+  function renderListings({ scroll = false } = {}) {
     clearNoResults();
-    // Only one active tab across all filter groups
-    tabs.forEach((t) => t.classList.toggle('active', t.dataset.filter === filter));
+    syncTabsFromState();
+    updateActiveFiltersUI();
+    updateTabCounts();
 
     let matchCount = 0;
     let visibleCount = 0;
+    const useLimit = !state.showAll && !hasActiveFilters();
 
     cards.forEach((card) => {
-      const matches = cardMatches(card, filter);
+      const matches = cardMatches(card);
       if (!matches) {
         card.classList.add('is-hidden');
+        card.classList.remove('listing-match-pulse');
         return;
       }
       matchCount++;
-      const shouldShow = showAll || filter !== 'all' || visibleCount < INITIAL_COUNT;
+      const shouldShow = !useLimit || visibleCount < INITIAL_COUNT;
       if (shouldShow) {
         card.classList.remove('is-hidden', 'is-hidden-initial');
         visibleCount++;
+        if (state.fromHero) {
+          card.classList.add('listing-match-pulse');
+          window.setTimeout(() => card.classList.remove('listing-match-pulse'), 1200);
+        }
       } else {
         card.classList.add('is-hidden');
       }
     });
 
     updateResultsBar(visibleCount, matchCount);
+    if (state.fromHero || hasActiveFilters()) updateHeroHint(matchCount);
+    else if (heroHint) heroHint.textContent = 'Filters the Arizona land listings below';
 
     if (loadMoreBtn) {
-      const moreExist = filter === 'all' && !showAll && matchCount > INITIAL_COUNT;
+      const moreExist = useLimit && matchCount > INITIAL_COUNT;
       loadMoreBtn.style.display = moreExist ? 'inline-flex' : 'none';
+      loadMoreBtn.hidden = !moreExist;
     }
 
     if (matchCount === 0 && grid) {
       const msg = document.createElement('div');
       msg.className = 'no-results-msg';
-      msg.innerHTML =
-        '<h3>No Properties Found</h3><p>Try another county, category, or clear filters to see all listings.</p>';
+      msg.innerHTML = `
+        <h3>No properties found</h3>
+        <p>Try another county (Cochise, Yavapai, Pima), type, or status — or <button type="button" class="linkish" id="no-results-clear">clear your search</button>.</p>
+      `;
       grid.appendChild(msg);
+      msg.querySelector('#no-results-clear')?.addEventListener('click', clearSearch);
     }
 
-    if (scroll) {
-      document.getElementById('listings-section')?.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (scroll) scrollToListings();
+
+    state.fromHero = false;
   }
 
-  // Initial: hide overflow cards
+  function applyTabFilter(filter) {
+    const key = (filter || 'all').toLowerCase();
+
+    if (key === 'all') {
+      // Full reset when jumping to "all"
+      state.location = '';
+      state.type = '';
+      state.status = '';
+      state.showAll = true;
+      syncHeroFromState();
+      renderListings();
+      return;
+    }
+
+    if (STATUS_KEYS.includes(key)) {
+      state.status = key;
+      state.showAll = true;
+      syncHeroFromState();
+      renderListings();
+      return;
+    }
+
+    if (TYPE_KEYS.includes(key)) {
+      state.type = key;
+      state.status = '';
+      state.showAll = true;
+      syncHeroFromState();
+      renderListings();
+      return;
+    }
+
+    // County / free keyword from nav or area cards
+    state.location = key;
+    state.status = '';
+    state.showAll = true;
+    syncHeroFromState();
+    renderListings();
+  }
+
+  function readHeroForm() {
+    state.location = (locationInput?.value || '').toLowerCase().trim();
+    state.type = typeSelect?.value || '';
+    state.status = statusSelect?.value || '';
+    state.showAll = true;
+    state.fromHero = true;
+  }
+
+  function clearSearch() {
+    state.location = '';
+    state.type = '';
+    state.status = '';
+    state.showAll = false;
+    state.fromHero = false;
+    if (locationInput) locationInput.value = '';
+    if (typeSelect) typeSelect.value = '';
+    if (statusSelect) statusSelect.value = '';
+    if (heroHint) heroHint.textContent = 'Filters the Arizona land listings below';
+    renderListings();
+  }
+
+  // Initial view: first row only
   cards.forEach((card, i) => {
     if (i >= INITIAL_COUNT) card.classList.add('is-hidden');
   });
-  if (loadMoreBtn) loadMoreBtn.style.display = cards.length > INITIAL_COUNT ? 'inline-flex' : 'none';
-  updateResultsBar(Math.min(INITIAL_COUNT, cards.length), cards.length);
+  renderListings();
 
+  // Status tabs under listings
   tabs.forEach((tab) => {
+    tab.setAttribute('role', 'tab');
     tab.addEventListener('click', () => {
-      showAll = true;
-      applyFilter(tab.dataset.filter || 'all');
+      applyTabFilter(tab.dataset.filter || 'all');
     });
   });
 
   loadMoreBtn?.addEventListener('click', () => {
-    showAll = true;
-    applyFilter(activeFilter);
+    state.showAll = true;
+    renderListings();
   });
 
+  clearBtn?.addEventListener('click', clearSearch);
+
+  // Hero horizontal search → listing cards
   searchForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const location = (document.getElementById('search-location')?.value || '').toLowerCase().trim();
-    const type = document.getElementById('search-type')?.value || '';
-    const category = document.getElementById('search-category')?.value || '';
+    readHeroForm();
+    renderListings({ scroll: true });
 
-    clearNoResults();
-    showAll = true;
-    tabs.forEach((t) => t.classList.remove('active'));
-    const allTab = Array.from(tabs).find((t) => t.dataset.filter === 'all');
-    if (allTab) allTab.classList.add('active');
-    activeFilter = 'all';
-
-    let matchCount = 0;
-    cards.forEach((card) => {
-      const searchBlob = (card.dataset.search || '').toLowerCase();
-      const title = card.querySelector('.listing-title')?.textContent.toLowerCase() || '';
-      const status = card.dataset.status || '';
-      const cardType = card.dataset.type || '';
-      const county = card.dataset.county || '';
-
-      const locOk =
-        !location ||
-        searchBlob.includes(location) ||
-        title.includes(location) ||
-        county.includes(location);
-      const typeOk = !type || cardType === type;
-      const catOk = !category || status === category;
-
-      const ok = locOk && typeOk && catOk;
-      if (ok) {
-        card.classList.remove('is-hidden', 'is-hidden-initial');
-        matchCount++;
-      } else {
-        card.classList.add('is-hidden');
-      }
-    });
-
-    updateResultsBar(matchCount, matchCount);
-    if (loadMoreBtn) loadMoreBtn.style.display = 'none';
-
-    if (matchCount === 0 && grid) {
-      const msg = document.createElement('div');
-      msg.className = 'no-results-msg';
-      msg.innerHTML =
-        '<h3>No Properties Found</h3><p>Try “Cochise”, “Yavapai”, ranch, or clear the search fields.</p>';
-      grid.appendChild(msg);
+    const btn = document.getElementById('hero-search-submit');
+    if (btn) {
+      btn.classList.add('is-searching');
+      window.setTimeout(() => btn.classList.remove('is-searching'), 600);
     }
-
-    document.getElementById('listings-section')?.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // expose for jump filters
+  // Live apply when type / status change (same pipeline as submit)
+  [typeSelect, statusSelect].forEach((el) => {
+    el?.addEventListener('change', () => {
+      readHeroForm();
+      state.fromHero = false;
+      renderListings();
+    });
+  });
+
+  // Debounced keyword typing while focused (optional live filter without leaving hero)
+  let locTimer = null;
+  locationInput?.addEventListener('input', () => {
+    window.clearTimeout(locTimer);
+    locTimer = window.setTimeout(() => {
+      // Only live-filter if user already has type/status set or has scrolled to listings
+      const nearListings = section && section.getBoundingClientRect().top < window.innerHeight;
+      if (nearListings || typeSelect?.value || statusSelect?.value) {
+        readHeroForm();
+        state.fromHero = false;
+        renderListings();
+      }
+    }, 320);
+  });
+
+  // Jump filters from nav / county cards
   window.__applyListingFilter = (filter) => {
-    showAll = true;
-    applyFilter(filter, { scroll: true });
+    applyTabFilter(filter);
+    scrollToListings();
   };
+
+  window.__clearListingSearch = clearSearch;
 }
 
 /* --------------------------------------------------------------------------
@@ -615,18 +814,49 @@ function initTestimonialCarousel() {
 }
 
 /* --------------------------------------------------------------------------
-   Lead form
+   Lead form element
    -------------------------------------------------------------------------- */
 function initLeadForm() {
-  document.querySelectorAll('.lead-form').forEach((form) => {
+  document.querySelectorAll('.lead-form, .hc-form').forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = form.querySelector('[name="name"]')?.value || 'Visitor';
-      const email = form.querySelector('[name="email"]')?.value || '';
-      alert(
-        `Thank you, ${name}! Your inquiry has been received.\nEmail: ${email}\n\nOur broker will contact you shortly.`
-      );
-      form.reset();
+      const name = form.querySelector('[name="name"]')?.value?.trim() || 'Visitor';
+      const email = form.querySelector('[name="email"]')?.value?.trim() || '';
+      const phone = form.querySelector('[name="phone"]')?.value?.trim() || '';
+      const intent = form.querySelector('[name="intent"]')?.value || '';
+      const acreage = form.querySelector('[name="acreage"]')?.value || '';
+      const budget = form.querySelector('[name="budget"]')?.value || '';
+      const message = form.querySelector('[name="message"]')?.value?.trim() || '';
+
+      form.classList.add('is-sending');
+
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Intent: ${intent}`,
+        `Acreage: ${acreage}`,
+        `Budget: ${budget}`,
+        '',
+        message,
+      ].join('\n');
+
+      const subject = encodeURIComponent(`Hague Creek inquiry — ${intent || 'consultation'}`);
+      const mailto = `mailto:info@haguecreek.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+      const success = form.querySelector('#form-success') || document.getElementById('form-success');
+      if (success) {
+        success.hidden = false;
+      }
+
+      // Open client email with prefilled inquiry (production can swap to API endpoint)
+      window.setTimeout(() => {
+        window.location.href = mailto;
+        form.classList.remove('is-sending');
+        form.reset();
+        // re-seed count-up placeholders if any
+        form.querySelectorAll('.count-up').forEach(() => {});
+      }, 450);
     });
   });
 }
